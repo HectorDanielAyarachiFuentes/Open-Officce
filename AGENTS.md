@@ -239,3 +239,22 @@ Las docentes de la cátedra enfatizan una serie de reglas operativas, buenas pr�
   - Sistemas Operativos: Windows 77,14% (135), Linux 10,86% (19), Otro 12,00% (21).
   - Disponibilidad: 84% cuenta con entre 2 y 5 horas semanales.
   - Propuesta: Plan formativo modular Moodle + Suite LibreOffice (Writer y Calc) bajo modalidad semipresencial / híbrida flexible de 3 horas semanales durante 6 semanas.
+
+---
+
+## 13. Guía de Referencia Rápida — Final 2024 (Planilla de Cálculo)
+- **Hoja encuesta:**
+  - `edad` (Col F): `=YEAR(TODAY())-E{row}` formateada como entero.
+  - `par-categoría` (Col L): `=ISEVEN(H{row})` (retorna `VERDADERO` / `FALSO`).
+  - `Mayúscula` (Col M): `=UPPER(C{row})` (apellido en mayúsculas).
+  - `Plus por cat` (Col N): `=IF(H{row}>=3; "Si corresponde"; " ")`.
+  - `Tabla resumen Régimen (P2:Q5)`: `Personal` (51) con `=COUNTIF($G$2:$G$101; "Personal")`, `Funcionarios` (49) con `=COUNTIF($G$2:$G$101; "Funcionarios")`, y `Total` (100) con `=SUM(Q3:Q4)`.
+  - `Gráfico de barras vertical (Punto 9)`: Ubicado en Col P a V (`X = 36000`, `Y = 4000`), vinculado dinámicamente al rango `encuesta.P2:Q4` (excluyendo la fila Total), con título "Cantidad de Empleados por Régimen", títulos de ejes X e Y, fondo transparente y etiquetas de datos numéricas (`DataCaption = 1`).
+- **Hoja P7 (Filtro Automático):**
+  - Duplicado exacto de `encuesta` registrado con `DatabaseRange: Filtro_P7` y `AutoFilter = True` (flechas desplegables activas).
+- **Hojas P7-a, P7-b, P7-c (Filtros estándar con copia de datos y DatabaseRange formal):**
+  - `P7-a` (Punto 8.a): Filtro `región = 'AN'` Y `régimen = 'Personal'` (9 registros + encabezado). `DatabaseRange: Datos_P7_a`.
+  - `P7-b` (Punto 8.b): Filtro `edad < 30` Y `régimen = 'Funcionarios'` (6 registros + encabezado). `DatabaseRange: Datos_P7_b`.
+  - `P7-c` (Punto 8.c): Filtro `régimen = 'Funcionarios'` Y `región = 'CL'` (3 registros + encabezado). `DatabaseRange: Datos_P7_c`.
+- **Exportación CSV (Punto 10 - Looker Studio):**
+  - `final-TIC2024.csv` exportado con 14 columnas completas y 101 filas en codificación UTF-8 limpia.
