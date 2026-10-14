@@ -157,3 +157,29 @@ Para que los docentes o usuarios puedan ver los criterios preconfigurados al abr
 - **Hojas 3A y 3B (Tablas Dinámicas y Gráficos Dinámicos con solapitas):**
   - `3A`: Tabla Dinámica de Vivienda (Alquila: 507, Propia: 611) + Gráfico Dinámico vertical ubicado en Col P a V (`X = 38000`, `Y = 5000`) con `loext:data-pilot-source="TablaDinamica_3A"` (`Vivienda ▼`, `Datos ▼`).
   - `3B`: Tabla Dinámica de Sueldo Promedio por Sección + Gráfico Dinámico vertical ubicado al costado en Col E (`X = 11000`, `Y = 1500`) con `loext:data-pilot-source="TablaDinamica_3B"` (`Sección ▼`, `Datos ▼`).
+
+---
+
+## 10. Guía de Referencia Rápida — Práctica 03 (Planilla de Cálculo)
+- **Hoja Respuestas de formulario 1:**
+  - `Punto 3`: Eliminación obligatoria de la columna A (`Timestamp` / `Marca temporal`), dejando 25 columnas de datos (Col A a Col Y) y 178 filas (177 respuestas encuestadas).
+  - Registrar rango de base de datos formal: `doc.DatabaseRanges.addNewByName("Tabla_Encuesta_Base", cellRangeAddress)` con `ContainsHeader = True` y `refresh()`.
+- **Hojas de Filtro Estándar (Copia de datos con DatabaseRange propio):**
+  - `de 0 a 2 años` (Punto 4): Filtro `Antigüedad laboral: = 'De 0 a 2 años'` (58 registros copiados + encabezado). `DatabaseRange: Filtro_0_a_2_anos`.
+  - `Más de 10 años` (Punto 5): Filtro `Antigüedad laboral: = 'Más de 10 años'` (49 registros copiados + encabezado). `DatabaseRange: Filtro_Mas_de_10_anos`.
+  - `Más de 10 años y Linux` (Punto 5.a): Filtro compuesto con operador AND: `Antigüedad = 'Más de 10 años'` Y `SO = 'Linux'` (7 registros copiados + encabezado). `DatabaseRange: Filtro_Mas_de_10_anos_Linux`.
+- **Cálculos Estadísticos con Fórmulas en Inglés (Puntos 7 y 8):**
+  - `Punto 7` (Capacitación al momento del ingreso): `=COUNTIF('Respuestas de formulario 1'.G2:G178; "Sí")` -> 72 respondentes (41,14%).
+  - `Punto 8` (Capacitación virtual previa): `=COUNTIF('Respuestas de formulario 1'.H2:H178; "Si")` -> 105 respondentes (60,00%).
+  - `Punto 6 complementario` (Capacitación presencial previa): `=COUNTIF('Respuestas de formulario 1'.I2:I178; "Si")` -> 133 respondentes (76,00%).
+- **Análisis Metodológico (Punto 9):**
+  - Dictamen: **NO** estuvo bien formulada. La pregunta cualitativa abierta en un instrumento tabulado impide el cálculo con `=CONTAR.SI` o tablas dinámicas sin reclasificación manual; debió formularse como pregunta cerrada con escala tipo Likert o categorías predeterminadas.
+- **Tablas Dinámicas y Gráficos Dinámicos con Solapas Desplegables (Puntos 10 y 11):**
+  - `Punto 10` (Modalidades de Capacitación): Tabla Dinámica nativa `TD_Modalidades` en hoja `Tabla Dinámica - Modalidades` (Fila y Datos = Col Q) + Gráfico Dinámico vertical (`X = 14000`, `Y = 1500`) con `loext:data-pilot-source="TD_Modalidades"` inyectado quirúrgicamente en su XML (`Modalidad ▼`, `Datos ▼`).
+    - Resultados: Virtual (68 - 38,86%), Presencial en puesto (46 - 26,29%), Semipresencial (40 - 22,86%), Presencial fuera (21 - 12,00%).
+  - `Punto 11` (Cruce Software vs Modalidad): Tabla Dinámica nativa de contingencia `TD_Software_Modalidad` en hoja `Tabla Dinámica - Cruce Software` (Filas = Software Col U, Columnas = Modalidad Col Q, Datos = Recuento) + Gráfico Dinámico vertical (`X = 1500`, `Y = 14500`) con `loext:data-pilot-source="TD_Software_Modalidad"` (`Software ▼`, `Modalidad ▼`, `Datos ▼`).
+    - Totales: Moodle (50), LibreOffice Writer (38), LibreOffice Calc (21), MediaWiki (24), Ninguna de los anteriores (42).
+- **Diagnóstico y Propuesta Institucional (Punto 12):**
+  - Sistemas Operativos: Windows 77,14% (135), Linux 10,86% (19), Otro 12,00% (21).
+  - Disponibilidad: 84% cuenta con entre 2 y 5 horas semanales.
+  - Propuesta: Plan formativo modular Moodle + Suite LibreOffice (Writer y Calc) bajo modalidad semipresencial / híbrida flexible de 3 horas semanales durante 6 semanas.
