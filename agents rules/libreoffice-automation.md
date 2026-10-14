@@ -69,7 +69,8 @@ Para que los docentes o usuarios puedan ver los criterios preconfigurados al abr
 ---
 
 ## 6. Tablas Dinámicas (DataPilot) y Gráficos Dinámicos (Pivot Charts con Solapas de Filtrado)
-- **Obligatoriedad de DataPilot Real:** Si una consigna solicita una Tabla Dinámica (o Piloto de Datos) y su correspondiente gráfico comparativo, **es mandatorio generar una Tabla Dinámica nativa** (`DataPilotTable`) y **vincular el gráfico como un Gráfico Dinámico real**. Queda estrictamente prohibido simular la tabla dinámica con fórmulas estáticas.
+- **Obligatoriedad Absoluta de DataPilot Real:** En cualquier consigna, trabajo práctico o examen final donde se solicite resumir, agrupar o contabilizar registros por categorías (ej. régimen, tipo de vivienda, modalidades, software) y acompañarlo de un gráfico comparativo, **es mandatorio generar una Tabla Dinámica nativa (`DataPilotTable`) y vincular el gráfico como un Gráfico Dinámico (Pivot Chart) con sus solapas interactivas de filtrado**.
+- **Prohibición Estricta:** Queda estrictamente prohibido simular resúmenes categóricos con tablas manuales de fórmulas estáticas (`=CONTAR.SI` / `=SUMA`) o gráficos estáticos desconectados cuando el contexto requiere análisis multidimensional o dinámico. El asistente debe aplicar siempre la tecnología de Piloto de Datos nativa.
 - **Protocolo de Creación en Python UNO:**
   1. Instanciar el descriptor: `dp_desc = sheet.getDataPilotTables().createDataPilotDescriptor()`.
   2. Asignar rango de origen: `dp_desc.setSourceRange(cellRangeAddress)`.
