@@ -187,7 +187,16 @@ Las docentes de la cátedra enfatizan una serie de reglas operativas, buenas pr�
 
 ---
 
-## 10. Guía de Referencia Rápida — Práctica 02 (Planilla de Cálculo)
+## 10. Principio de Entregable Limpio (La Estrella es la Resolución .ODS / Cero Informes Innecesarios)
+- **Foco Exclusivo en la Planilla (.ODS):** En trabajos prácticos y exámenes, el único protagonista y entregable oficial es el archivo de planilla de cálculo (`.ods`), respetando el nombre exacto de la consigna.
+- **Prohibición de Informes y Bloat:** Queda estrictamente prohibido generar informes de procesador de textos (`.odt`, `.pdf`, `.txt`) o estructuras de carpetas innecesarias dentro de los directorios `Resolucion/`, a menos que la consigna lo solicite expresamente como entrega obligatoria.
+- **Respuestas Teóricas Ligeras en Markdown (.md):** Si la consigna incluye reflexiones metodológicas o preguntas conceptuales (como los Puntos 9 y 12 de Práctica 03):
+  1. Se plasman prioritariamente en una hoja dedicada de la misma planilla (ej. `Resolución y Cálculos`), y/o
+  2. Se documentan en un único archivo Markdown (`.md`) conciso y ligero, que consume un mínimo de tokens, no contamina el explorador de archivos con binarios y mantiene la entrega impecable.
+
+---
+
+## 11. Guía de Referencia Rápida — Práctica 02 (Planilla de Cálculo)
 - **Hoja personas:**
   - `Sueldo` (Col L): `=K{row}*$C$1` (referencia absoluta al Monto fijo de `$1875` en `$C$1`).
   - `Descuento` (Col M): `=L{row}*$C$2` (referencia absoluta al `22,00%` en `$C$2`).
@@ -207,7 +216,7 @@ Las docentes de la cátedra enfatizan una serie de reglas operativas, buenas pr�
 
 ---
 
-## 11. Guía de Referencia Rápida — Práctica 03 (Planilla de Cálculo)
+## 12. Guía de Referencia Rápida — Práctica 03 (Planilla de Cálculo)
 - **Hoja Respuestas de formulario 1:**
   - `Punto 3`: Eliminación obligatoria de la columna A (`Timestamp` / `Marca temporal`), dejando 25 columnas de datos (Col A a Col Y) y 178 filas (177 respuestas encuestadas).
   - Registrar rango de base de datos formal: `doc.DatabaseRanges.addNewByName("Tabla_Encuesta_Base", cellRangeAddress)` con `ContainsHeader = True` y `refresh()`.
