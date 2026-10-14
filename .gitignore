@@ -1,0 +1,12 @@
+# LibreOffice temporary lock files
+.~lock.*#
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS / Editor temporary files
+Thumbs.db
+Desktop.ini
+.DS_Store

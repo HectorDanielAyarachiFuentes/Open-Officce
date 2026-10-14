@@ -1,0 +1,159 @@
+# Reglas de Operación y Automatización Nativa — LibreOffice y OpenOffice
+
+Esta directiva establece los protocolos y requisitos obligatorios para manipular, resolver trabajos prácticos y automatizar documentos de **LibreOffice Calc, Writer e Impress** desde el entorno del asistente.
+
+---
+
+## 1. Entorno de Ejecución y Motor Nativo
+- **Ejecutable oficial:** `C:\Program Files\LibreOffice\program\soffice.exe`
+- **Intérprete Python con UNO:** `C:\Program Files\LibreOffice\program\python.exe`
+- **Protocolo de conexión:** Conectar siempre mediante named pipes o sockets locales:
+  `soffice.exe --headless --accept="pipe,name=<nombre_pipe>;urp;StarOffice.ComponentContext"`
+- **Prohibición de librerías genéricas e IAs convencionales:** Queda estrictamente prohibido usar librerías genéricas de Python como `pandas` o reescribir manualmente el XML interno con serializadores genéricos (`xml.etree.ElementTree`, `minidom`) que no respeten los 30+ namespaces de OpenDocument (ODF), ya que destruyen los rangos de base de datos, metadatos y corrompen las fórmulas (`Err:510`).
+
+---
+
+## 2. Protocolo Obligatorio para Filtros Estándar (Standard Filter) y Sensibilidad al Cursor
+Para que los docentes o usuarios puedan ver los criterios preconfigurados al abrir el cuadro de diálogo **`Datos > Más filtros > Filtro estándar...`**:
+1. **Sensibilidad al Cursor (Contexto de Celda Activa en la GUI):**
+   - En la interfaz gráfica de LibreOffice Calc, el diálogo `Datos > Más filtros > Filtro estándar...` es estrictamente dependiente de la posición de la celda activa.
+   - Si el usuario tiene seleccionada una celda **fuera de la tabla de datos** (por ejemplo, celdas de parámetros en filas 1 a 3 como `C2` con 'Descuentos 22,00%', títulos o celdas vacías), Calc interpreta la acción como la creación de un nuevo filtro en blanco para esa posición y abre el diálogo con todas las condiciones en `- ninguno -`.
+   - **Regla de Operación:** Para visualizar o editar los criterios precargados en la GUI, el cursor **debe situarse obligatoriamente sobre cualquier celda de la tabla de datos o fila de encabezados** (ej. rango `A4:N108`).
+2. **Persistencia Dual en `DatabaseRanges`:**
+   - Registrar siempre un rango de base de datos formal nombrado mediante `doc.DatabaseRanges.addNewByName("<Nombre_Rango>", cellRangeAddress)`.
+   - Configurar el descriptor con `fd = dbr.getFilterDescriptor()`, `fd.setPropertyValue("ContainsHeader", True)` y asignar los campos `com.sun.star.sheet.TableFilterField`.
+   - Invocar `dbr.refresh()` para vincularlo a la vista de la hoja.
+3. **Cobertura Ampliada en XML de Hoja (__Anonymous_Sheet_DB__):**
+   - Como medida de blindaje técnico, sincronizar quirúrgicamente en `content.xml` el rango anónimo interno de la hoja (`__Anonymous_Sheet_DB__<Index>`) con cobertura expandida (`A1:XFD1048576`) y sus condiciones `<table:filter-and>`, de modo que Calc asocie los filtros incluso ante clics periféricos.
+4. **Copia de Resultados a Hojas Nuevas:**
+   - Si la consigna exige volcar el filtro en una hoja nueva (ej. `de 0 a 2 años`), usar `filter_desc.setPropertyValue("CopyOutputData", True)` apuntando a la dirección de celda de la nueva hoja, asegurando que tanto la hoja origen como la destino tengan su propio `DatabaseRange` registrado.
+
+---
+
+## 3. Prohibición de Serializadores XML Genéricos (Prevención de Err:510)
+- **Causa Raíz de Err:510:** Al reescribir `content.xml` mediante `xml.etree.ElementTree` u otras herramientas que analizan y vuelven a serializar el árbol XML, se elimina el prefijo de namespace de las fórmulas de Calc (`table:formula="of:=..."` se serializa como `=of:=...`), provocando el error `Err:510 (Variable / Sintaxis ausente)` en Calc.
+- **Regla Estricta:** Reconstruir archivos siempre mediante el API UNO nativo (`soffice.exe --headless` + `python.exe`). Cualquier ajuste en `content.xml` debe limitarse a sustitución quirúrgica de texto UTF-8 sobre `<table:database-ranges>` o inyección de atributos sin re-serializar el resto del documento.
+
+---
+
+## 4. Manejo de Fórmulas y Localización en Calc
+- **Idioma de las Fórmulas en el API UNO:**
+  - Al invocar `cell.setFormula(...)`, **siempre debe suministrarse el nombre de función en inglés estándar**:
+    - `=COUNTIF(...)` → Se traduce y muestra como `=CONTAR.SI(...)` en Calc en español.
+    - `=COUNTIFS(...)` → Se traduce y muestra como `=CONTAR.SI.CONJUNTO(...)`.
+    - `=SUM(...)` → Se traduce y muestra como `=SUMA(...)`.
+    - `=COUNTA(...)` → Se traduce y muestra como `=CONTARA(...)`.
+    - `=AVERAGEIF(...)` → Se traduce y muestra como `=PROMEDIO.SI(...)`.
+    - `=AVERAGE(...)` → Se traduce y muestra como `=PROMEDIO(...)`.
+    - `=IF(...)` → Se traduce y muestra como `=SI(...)`.
+    - `=MOD(...)` → Se traduce y muestra como `=RESIDUO(...)`.
+  - *Advertencia:* Pasar funciones en español directamente a `.setFormula(...)` provoca el error de cálculo `#¿NOMBRE?`.
+
+---
+
+## 5. Gráficos Estadísticos y Visualización (Reglas de Renderizado y Estética)
+- **Prevención de Gráficos Vacíos (Bug de Fórmulas en Headless):**
+  - En modo headless, LibreOffice Calc no evalúa síncronamente las fórmulas recién insertadas antes de crear el gráfico, lo que genera valores `NaN` (`2.22e-308`), dejando el gráfico sin barras y con eje limitado a 12.
+  - **Regla Obligatoria:** Invocar siempre `doc.calculateAll()` y poblar explícitamente el array de datos del gráfico mediante `chart.getData().setData(...)` con los valores numéricos calculados.
+- **Frontend Embellecedor en Gráficos:**
+  - Eliminar el fondo gris opaco por defecto: `diagram.Wall.setPropertyValue("FillStyle", uno.Enum("com.sun.star.drawing.FillStyle", "NONE"))`.
+  - Activar etiquetas de datos numéricas sobre cada barra o sector: `diagram.setPropertyValue("DataCaption", 1)`.
+  - Asignar paletas limpias y contrastadas (azul institucional `0x1A73E8`, verde `0x2E7D32`, teal, púrpura).
+  - Títulos descriptivos con fuente de tamaño adecuado y títulos en ejes X e Y.
+- **Cero Solapamiento y Posicionamiento Visible en Pantalla:**
+  - Posicionar los gráficos **en el campo visual inmediato del usuario**, evitando márgenes desmedidos (ej. NUNCA colocar `rect.X = 110000`, ya que desplaza el gráfico más de 1 metro a la derecha y queda oculto fuera de pantalla).
+  - Posicionamiento óptimo:
+    - Inmediatamente a la derecha de la tabla: `rect.X = 11000` a `18000` (Col E a G), `rect.Y = 1500`.
+    - O directamente debajo de la tabla: `rect.X = 38000` (Col P), `rect.Y = 5000` (Fila 9/10), abarcando columnas P a V.
+
+---
+
+## 6. Tablas Dinámicas (DataPilot) y Gráficos Dinámicos (Pivot Charts con Solapas de Filtrado)
+- **Obligatoriedad de DataPilot Real:** Si una consigna solicita una Tabla Dinámica (o Piloto de Datos) y su correspondiente gráfico comparativo, **es mandatorio generar una Tabla Dinámica nativa** (`DataPilotTable`) y **vincular el gráfico como un Gráfico Dinámico real**. Queda estrictamente prohibido simular la tabla dinámica con fórmulas estáticas.
+- **Protocolo de Creación en Python UNO:**
+  1. Instanciar el descriptor: `dp_desc = sheet.getDataPilotTables().createDataPilotDescriptor()`.
+  2. Asignar rango de origen: `dp_desc.setSourceRange(cellRangeAddress)`.
+  3. Configurar campos:
+     - Filas: `field.setPropertyValue("Orientation", uno.Enum("com.sun.star.sheet.DataPilotFieldOrientation", "ROW"))`.
+     - Datos: `field.setPropertyValue("Orientation", uno.Enum("com.sun.star.sheet.DataPilotFieldOrientation", "DATA"))`.
+     - Función de agregación: `field.setPropertyValue("Function", uno.Enum("com.sun.star.sheet.GeneralFunction", "SUM" | "AVERAGE" | "COUNT"))`.
+  4. Inserción: `sheet.getDataPilotTables().insertNewByName("<NombreTabla>", outCellAddress, dp_desc)`.
+  5. Formato numérico: Formatear las celdas numéricas de la tabla dinámica generada (ej. `NumberFormat = 4` para moneda/decimales) para presentación visual impecable.
+- **Activación de Gráficos Dinámicos con Solapas Interactivas ("Solapitas" de Filtrado):**
+  - Para que LibreOffice Calc reconozca el gráfico como un **Gráfico Dinámico (Pivot Chart)** oficial y muestre las solapas desplegables interactivas en la interfaz (`<Campo> ▼`, `Datos ▼`):
+    1. **Rango de Datos:** Asignar como rango de datos del gráfico el rango de salida completo de la Tabla Dinámica:
+       `charts.addNewByName("<NombreGrafico>", rect, (dp_table.getOutputRange(),), True, True)`.
+    2. **Atributo de Vinculación ODF:** Vincular el gráfico al motor DataPilot inyectando quirúrgicamente el atributo ODF nativo:
+       `<chart:chart ... loext:data-pilot-source="<NombreTablaDinamica>">`
+       dentro del archivo `<NombreGrafico>/content.xml` en el paquete ODS.
+    3. **Snippet de Inyección Quirúrgica:**
+       ```python
+       import re, zipfile
+
+       files_dict = {}
+       with zipfile.ZipFile(ods_path, 'r') as z:
+           for name in z.namelist():
+               files_dict[name] = z.read(name)
+
+       chart_xml_path = f"{chart_name}/content.xml"
+       c_xml = files_dict[chart_xml_path].decode('utf-8')
+       if f'loext:data-pilot-source="{dp_name}"' not in c_xml:
+           pattern = r'(<chart:chart\b[^>]*)(>)'
+           c_xml = re.sub(pattern, rf'\1 loext:data-pilot-source="{dp_name}"\2', c_xml)
+           files_dict[chart_xml_path] = c_xml.encode('utf-8')
+
+       with zipfile.ZipFile(ods_path, 'w', zipfile.ZIP_DEFLATED) as z:
+           for name, data in files_dict.items():
+               z.writestr(name, data)
+       ```
+    4. Esto activa el controlador de gráficos dinámicos de LibreOffice, renderizando automáticamente las solapas desplegables interactivas en la parte inferior y lateral del gráfico (`Vivienda ▼`, `Sección ▼`, `Datos ▼`).
+
+---
+
+## 7. Ordenamiento Nativo de Rangos en Calc (SortDescriptor y Envoltura uno.Any)
+- **Causa del Fallo Silencioso:** Al configurar la propiedad `SortFields` de un `SortDescriptor` obtenido mediante `rng.createSortDescriptor()`, Python pasa una tupla de estructuras `TableSortField`. Si se asigna directamente como tupla estándar (`p.Value = (sf1, sf2)`), el puente UNO **ignora la asignación en silencio**, no produce ningún error pero deja la tabla sin ordenar.
+- **Regla Estricta:** La asignación de `SortFields` debe envolverse obligatoriamente con el tipo de secuencia UNO explícito mediante `uno.Any`:
+  ```python
+  from com.sun.star.table import TableSortField
+
+  sf1 = TableSortField()
+  sf1.Field = 8  # Índice de columna relativo a la primera columna del rango (0 = columna inicial del rango)
+  sf1.IsAscending = True
+  sf1.IsCaseSensitive = False
+
+  for p in sort_desc:
+      if p.Name == "ContainsHeader":
+          p.Value = True
+      elif p.Name == "SortFields":
+          p.Value = uno.Any("[]com.sun.star.table.TableSortField", (sf1,))
+  rng.sort(tuple(sort_desc))
+  ```
+- **Indexación Relativa:** La propiedad `Field` es relativa a la primera columna del rango seleccionado (ej. si el rango es `A4:N108`, la columna `A` es índice 0; si el rango fuera `C4:N108`, la columna `C` sería índice 0).
+
+---
+
+## 8. Gestión de Bloqueo de Archivos en Windows (File Locking)
+- En sistemas Windows, LibreOffice bloquea con bloqueo exclusivo (`[WinError 32]`) cualquier archivo abierto en su interfaz gráfica (`.~lock.<nombre>.ods#`).
+- Si se detecta un error de permiso o bloqueo de archivo:
+  1. Verificar si existen procesos activos de `soffice.exe` o `soffice.bin`.
+  2. Advertir claramente al usuario que cierre la ventana de LibreOffice para liberar el archivo antes de intentar sobreescribirlo o sincronizarlo.
+
+---
+
+## 9. Guía de Referencia Rápida — Práctica 02 (Planilla de Cálculo)
+- **Hoja personas:**
+  - `Sueldo` (Col L): `=K{row}*$C$1` (referencia absoluta al Monto fijo de `$1875` en `$C$1`).
+  - `Descuento` (Col M): `=L{row}*$C$2` (referencia absoluta al `22,00%` en `$C$2`).
+  - `Incentivo` (Col N): `=IF(K{row}>7; 1700; 0)`.
+- **Hoja encuestas:**
+  - `Calculo` (Col N): `=IF(MOD(A{row}; 2)=0; E{row}*2; E{row})`.
+- **Hojas 1A y 1B (Ordenamiento múltiple):**
+  - `1A`: Ordenar rango `A4:N108` por Localidad (Field 8) y Dirección (Field 6) con `uno.Any`.
+  - `1B`: Ordenar rango `A1:N225` por Curso (Field 2), Sexo (Field 3) y Vivienda (Field 9) con `uno.Any`.
+- **Hojas 2A, 2B y 2C (Filtros estándar):**
+  - `2A`: Contaduría con escalafón 6 a 10. Ordenado por Nombre (Field 2) y Apellido (Field 1).
+  - `2B`: Contaduría con escalafón 6.
+  - `2C`: Vivienda PROPIA y Electricidad SI.
+- **Hojas 3A y 3B (Tablas Dinámicas y Gráficos Dinámicos con solapitas):**
+  - `3A`: Tabla Dinámica de Vivienda (Alquila: 507, Propia: 611) + Gráfico Dinámico vertical ubicado en Col P a V (`X = 38000`, `Y = 5000`) con `loext:data-pilot-source="TablaDinamica_3A"` (`Vivienda ▼`, `Datos ▼`).
+  - `3B`: Tabla Dinámica de Sueldo Promedio por Sección + Gráfico Dinámico vertical ubicado al costado en Col E (`X = 11000`, `Y = 1500`) con `loext:data-pilot-source="TablaDinamica_3B"` (`Sección ▼`, `Datos ▼`).

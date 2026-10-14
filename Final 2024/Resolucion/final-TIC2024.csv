@@ -1,0 +1,101 @@
+legajo,nombre,apellido,dni,Año de nacimiento,edad,regimen,categoria,region,email,observaciones,par-categoría,Mayúscula,Plus por cat
+1001,Leila,Hensley,12693508,1989,37,Funcionarios,2,AN,Phasellus.fermentum.convallis@diam.co.uk,"pede sagittis augue, eu tempor erat neque non quam. Pellentesque",VERDADERO,HENSLEY, 
+1002,Zachary,Romero,17500079,1994,32,Funcionarios,1,AN,tellus.faucibus.leo@In.net,Morbi sit amet massa. Quisque porttitor eros nec tellus. Nunc,FALSO,ROMERO, 
+1003,Adara,Francis,12070761,1982,44,Funcionarios,2,GA,ut.ipsum@Cumsociis.ca,"sem mollis dui, in sodales elit erat vitae risus. Duis",VERDADERO,FRANCIS, 
+1004,Kenyon,Carey,19893186,1997,29,Personal,1,MA,neque.sed@tellusnon.com,"leo elementum sem, vitae aliquam eros turpis non enim. Mauris",FALSO,CAREY, 
+1005,Karleigh,Short,11277324,1994,32,Funcionarios,3,CA,eu.eros@velit.net,Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet,FALSO,SHORT,Si corresponde
+1006,Kelly,Rose,18407489,1994,32,Personal,1,AN,nibh@nonlorem.org,Integer mollis. Integer tincidunt aliquam arcu. Aliquam ultrices iaculis odio.,FALSO,ROSE, 
+1007,Ulric,Marks,19653471,1989,37,Personal,3,CV,Cras.lorem@nonegestasa.edu,"varius orci, in consequat enim diam vel arcu. Curabitur ut",FALSO,MARKS,Si corresponde
+1008,Erin,Stokes,16817005,1992,34,Personal,3,CM,arcu.Aliquam.ultrices@blanditatnisi.edu,leo. Cras vehicula aliquet libero. Integer in magna. Phasellus dolor,FALSO,STOKES,Si corresponde
+1009,Reuben,Holman,14061572,1998,28,Personal,3,AN,vel.arcu.eu@lectusNullamsuscipit.com,dignissim tempor arcu. Vestibulum ut eros non enim commodo hendrerit.,FALSO,HOLMAN,Si corresponde
+1010,Margaret,Vinson,17564664,1987,39,Personal,3,CV,tellus.Nunc@feugiatLoremipsum.com,massa. Suspendisse eleifend. Cras sed leo. Cras vehicula aliquet libero.,FALSO,VINSON,Si corresponde
+1011,Ali,Ramos,19673382,1995,31,Personal,3,CA,quam@neceuismod.edu,"cursus luctus, ipsum leo elementum sem, vitae aliquam eros turpis",FALSO,RAMOS,Si corresponde
+1012,Kiona,Mccoy,17967486,1997,29,Funcionarios,2,AR,id.libero.Donec@orciUt.edu,"luctus sit amet, faucibus ut, nulla. Cras eu tellus eu",VERDADERO,MCCOY, 
+1013,Fritz,Bradford,11555837,1995,31,Funcionarios,3,CA,est.Nunc@mattisCraseget.co.uk,Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed,FALSO,BRADFORD,Si corresponde
+1014,Jamal,Petty,16618648,1987,39,Personal,1,AR,Donec.sollicitudin@consequatnecmollis.edu,"in, cursus et, eros. Proin ultrices. Duis volutpat nunc sit",FALSO,PETTY, 
+1015,Alika,Oneill,14232712,1992,34,Personal,3,BA,augue@pharetra.com,"nonummy ultricies ornare, elit elit fermentum risus, at fringilla purus",FALSO,ONEILL,Si corresponde
+1016,Daryl,Baird,18573982,1995,31,Personal,2,EX,Vivamus.molestie@Crasegetnisi.ca,mollis. Integer tincidunt aliquam arcu. Aliquam ultrices iaculis odio. Nam,VERDADERO,BAIRD, 
+1017,Christopher,Mullen,17202276,1982,44,Funcionarios,1,PV,vitae.mauris@diam.edu,eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula.,FALSO,MULLEN, 
+1018,Rhonda,Baird,17902734,1982,44,Funcionarios,1,AN,Curabitur@atarcuVestibulum.org,nec orci. Donec nibh. Quisque nonummy ipsum non arcu. Vivamus,FALSO,BAIRD, 
+1019,Vera,Harvey,13894870,1977,49,Funcionarios,2,PV,pede.ultrices@congue.org,dignissim pharetra. Nam ac nulla. In tincidunt congue turpis. In,VERDADERO,HARVEY, 
+1020,Mercedes,Burks,19554253,1995,31,Funcionarios,3,CA,convallis.est@Vivamusnon.edu,"eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egestas nunc",FALSO,BURKS,Si corresponde
+1021,Lillith,Gay,12797725,1992,34,Personal,3,CV,Aliquam.adipiscing.lobortis@asollicitudinorci.org,"semper egestas, urna justo faucibus lectus, a sollicitudin orci sem",FALSO,GAY,Si corresponde
+1022,Leilani,Dominguez,16257253,1987,39,Personal,2,CV,in.magna@estMauriseu.edu,nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam vitae,VERDADERO,DOMINGUEZ, 
+1023,Russell,Pate,15043162,1995,31,Funcionarios,3,CV,per@Aliquamnisl.co.uk,"Donec tempus, lorem fringilla ornare placerat, orci lacus vestibulum lorem,",FALSO,PATE,Si corresponde
+1024,Wyoming,Dean,18675425,1995,31,Personal,2,CV,Donec.fringilla.Donec@Duissit.com,cursus purus. Nullam scelerisque neque sed sem egestas blandit. Nam,VERDADERO,DEAN, 
+1025,Desirae,Irwin,14800857,1996,30,Funcionarios,3,AN,dis.parturient@Crasvehicula.edu,"faucibus id, libero. Donec consectetuer mauris id sapien. Cras dolor",FALSO,IRWIN,Si corresponde
+1026,Zephania,Faulkner,11845690,1995,31,Personal,1,CV,sem.vitae@fermentumrisusat.com,"tellus. Nunc lectus pede, ultrices a, auctor non, feugiat nec,",FALSO,FAULKNER, 
+1027,Amanda,Barrera,21225715,1987,39,Personal,1,M,auctor@nonegestas.ca,"ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo",FALSO,BARRERA, 
+1028,Charissa,Shields,20248162,1989,37,Funcionarios,2,CA,tempus.mauris.erat@nequetellus.edu,"faucibus id, libero. Donec consectetuer mauris id sapien. Cras dolor",VERDADERO,SHIELDS, 
+1029,Devin,Golden,20043192,1992,34,Funcionarios,1,CA,ligula@semsempererat.org,"sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum",FALSO,GOLDEN, 
+1030,Isabelle,Parker,15935537,1996,30,Funcionarios,1,PA,Quisque.ornare@mauris.com,orci. Ut sagittis lobortis mauris. Suspendisse aliquet molestie tellus. Aenean,FALSO,PARKER, 
+1031,Erica,Bates,11531519,1982,44,Personal,3,CL,ac.mi.eleifend@velarcu.edu,ipsum nunc id enim. Curabitur massa. Vestibulum accumsan neque et,FALSO,BATES,Si corresponde
+1032,Bethany,Fischer,20247501,1995,31,Funcionarios,3,MA,mollis@massaQuisque.edu,nisi a odio semper cursus. Integer mollis. Integer tincidunt aliquam,FALSO,FISCHER,Si corresponde
+1033,Marcia,Johnston,14338980,1981,45,Personal,2,M,Donec.felis@consectetuer.com,"quis, pede. Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod",VERDADERO,JOHNSTON, 
+1034,Wayne,Mcfadden,12953496,1996,30,Personal,3,AN,malesuada.fringilla@eutellusPhasellus.com,"eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed",FALSO,MCFADDEN,Si corresponde
+1035,Hilda,Warner,18448614,1993,33,Personal,2,AN,vitae.diam.Proin@laciniavitae.edu,pede. Nunc sed orci lobortis augue scelerisque mollis. Phasellus libero,VERDADERO,WARNER, 
+1036,Chadwick,Gonzalez,20845943,1992,34,Personal,3,GA,orci.sem.eget@scelerisquescelerisquedui.ca,"ultrices, mauris ipsum porta elit, a feugiat tellus lorem eu",FALSO,GONZALEZ,Si corresponde
+1037,Kevyn,Bailey,19460024,1977,49,Funcionarios,2,MA,aliquet.libero@lobortisrisusIn.ca,vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim.,VERDADERO,BAILEY, 
+1038,Cailin,Holmes,18265564,1989,37,Funcionarios,3,CA,et.magnis@necante.edu,"et, euismod et, commodo at, libero. Morbi accumsan laoreet ipsum.",FALSO,HOLMES,Si corresponde
+1039,Cade,Humphrey,14573345,1986,40,Funcionarios,3,LR,facilisi.Sed@Curabituregestas.edu,ipsum primis in faucibus orci luctus et ultrices posuere cubilia,FALSO,HUMPHREY,Si corresponde
+1040,Sigourney,Farmer,17691121,1996,30,Personal,2,AN,eros.Proin.ultrices@vitae.edu,"mi felis, adipiscing fringilla, porttitor vulputate, posuere vulputate, lacus. Cras",VERDADERO,FARMER, 
+1041,Cara,Gallagher,18408801,1997,29,Funcionarios,3,A,metus.urna.convallis@lorem.ca,arcu. Nunc mauris. Morbi non sapien molestie orci tincidunt adipiscing.,FALSO,GALLAGHER,Si corresponde
+1042,Clare,Stanley,19901361,1992,34,Personal,2,AN,dictum@Inscelerisquescelerisque.org,velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus.,VERDADERO,STANLEY, 
+1043,Peter,Beard,16257912,1987,39,Funcionarios,2,N,aliquet.metus.urna@dolordolor.org,Integer mollis. Integer tincidunt aliquam arcu. Aliquam ultrices iaculis odio.,VERDADERO,BEARD, 
+1044,Laith,Erickson,17983366,1994,32,Personal,3,MA,imperdiet@malesuadafames.org,neque non quam. Pellentesque habitant morbi tristique senectus et netus,FALSO,ERICKSON,Si corresponde
+1045,Aurelia,Singleton,20278918,1987,39,Personal,3,CA,Integer.vitae.nibh@Sed.ca,"ipsum. Suspendisse non leo. Vivamus nibh dolor, nonummy ac, feugiat",FALSO,SINGLETON,Si corresponde
+1046,Cyrus,Griffith,17640735,1991,35,Personal,1,GA,Suspendisse@Fuscemilorem.org,tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget,FALSO,GRIFFITH, 
+1047,Ruth,Elliott,16763790,1996,30,Funcionarios,2,AS,enim.diam.vel@utsemNulla.net,"aliquet libero. Integer in magna. Phasellus dolor elit, pellentesque a,",VERDADERO,ELLIOTT, 
+1048,Kibo,Gentry,17700082,1993,33,Funcionarios,3,EX,laoreet.ipsum.Curabitur@Sed.edu,sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed nulla,FALSO,GENTRY,Si corresponde
+1049,Ray,Nichols,20969072,1987,39,Personal,2,CA,eros.Nam@turpis.ca,"a, magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",VERDADERO,NICHOLS, 
+1050,Kelsie,Baldwin,13054826,1987,39,Personal,1,BA,velit@ac.ca,Aenean eget metus. In nec orci. Donec nibh. Quisque nonummy,FALSO,BALDWIN, 
+1051,Palmer,Hardin,19633622,1999,27,Funcionarios,3,CA,massa@Cras.ca,sollicitudin adipiscing ligula. Aenean gravida nunc sed pede. Cum sociis,FALSO,HARDIN,Si corresponde
+1052,Dorian,Britt,19771518,1995,31,Funcionarios,1,CV,vel.mauris.Integer@eudui.edu,"vulputate, nisi sem semper erat, in consectetuer ipsum nunc id",FALSO,BRITT, 
+1053,Mara,Glass,19128190,1991,35,Funcionarios,3,AN,diam.dictum@enimconsequatpurus.net,volutpat. Nulla dignissim. Maecenas ornare egestas ligula. Nullam feugiat placerat,FALSO,GLASS,Si corresponde
+1054,Jemima,Potts,22210104,1998,28,Personal,2,G,erat.in.consectetuer@nec.edu,ipsum non arcu. Vivamus sit amet risus. Donec egestas. Aliquam,VERDADERO,POTTS, 
+1055,Martena,Petty,14996171,1994,32,Funcionarios,1,CL,amet.orci@orci.ca,"justo nec ante. Maecenas mi felis, adipiscing fringilla, porttitor vulputate,",FALSO,PETTY, 
+1056,Yeo,Miller,20275087,1994,32,Personal,2,GA,nonummy.ultricies@pedemalesuada.edu,"consectetuer mauris id sapien. Cras dolor dolor, tempus non, lacinia",VERDADERO,MILLER, 
+1057,Donna,Foster,21976818,1986,40,Personal,2,GA,nec.imperdiet@velitegestaslacinia.org,mauris blandit mattis. Cras eget nisi dictum augue malesuada malesuada.,VERDADERO,FOSTER, 
+1058,Lance,Herrera,19230607,1996,30,Funcionarios,3,MU,tempus@vitaesodales.ca,"ut mi. Duis risus odio, auctor vitae, aliquet nec, imperdiet",FALSO,HERRERA,Si corresponde
+1059,Deirdre,Leon,14305896,1989,37,Personal,3,GA,nec.enim.Nunc@arcuNunc.net,in sodales elit erat vitae risus. Duis a mi fringilla,FALSO,LEON,Si corresponde
+1060,Kamal,Clements,14587367,1994,32,Personal,2,AN,dui@sitametultricies.com,"cursus luctus, ipsum leo elementum sem, vitae aliquam eros turpis",VERDADERO,CLEMENTS, 
+1061,Joshua,Shepard,13430846,1982,44,Personal,3,G,Mauris.eu.turpis@etnetuset.net,senectus et netus et malesuada fames ac turpis egestas. Fusce,FALSO,SHEPARD,Si corresponde
+1062,Forrest,Chandler,12268910,1997,29,Personal,2,MU,magna.Ut.tincidunt@dapibus.edu,vel arcu. Curabitur ut odio vel est tempor bibendum. Donec,VERDADERO,CHANDLER, 
+1063,Uriel,Frank,16843313,1994,32,Personal,1,PV,ligula.elit@ametrisus.com,in faucibus orci luctus et ultrices posuere cubilia Curae,FALSO,FRANK, 
+1064,Germaine,Clarke,16056781,1994,32,Personal,3,NA,magna@tinciduntduiaugue.co.uk,"ut dolor dapibus gravida. Aliquam tincidunt, nunc ac mattis ornare,",FALSO,CLARKE,Si corresponde
+1065,Quail,Gray,20914116,1989,37,Personal,2,CA,purus@elementum.edu,"Suspendisse non leo. Vivamus nibh dolor, nonummy ac, feugiat non,",VERDADERO,GRAY, 
+1066,Quail,Ward,12000409,1992,34,Funcionarios,2,AN,mauris.eu@rutrumloremac.co.uk,"odio, auctor vitae, aliquet nec, imperdiet nec, leo. Morbi neque",VERDADERO,WARD, 
+1067,Akeem,Collins,18641664,1998,28,Funcionarios,3,EX,elit.Curabitur.sed@vel.com,Maecenas malesuada fringilla est. Mauris eu turpis. Nulla aliquet. Proin,FALSO,COLLINS,Si corresponde
+1068,Ryan,Pruitt,20433503,1987,39,Funcionarios,1,AR,lacus.Quisque.purus@inaliquetlobortis.org,"non, feugiat nec, diam. Duis mi enim, condimentum eget, volutpat",FALSO,PRUITT, 
+1069,Kane,Johnston,13231385,1989,37,Personal,1,AN,ut.pellentesque@semper.org,erat neque non quam. Pellentesque habitant morbi tristique senectus et,FALSO,JOHNSTON, 
+1070,Olympia,Henson,22086694,1994,32,Personal,3,CV,et.malesuada.fames@gravidasit.edu,"interdum. Sed auctor odio a purus. Duis elementum, dui quis",FALSO,HENSON,Si corresponde
+1071,Theodore,Wiggins,18783128,1982,44,Personal,2,CV,diam@adlitoratorquent.ca,vel arcu eu odio tristique pharetra. Quisque ac libero nec,VERDADERO,WIGGINS, 
+1072,Peter,Spence,13583138,1997,29,Funcionarios,1,AN,euismod.enim.Etiam@Fusce.edu,"Duis elementum, dui quis accumsan convallis, ante lectus convallis est,",FALSO,SPENCE, 
+1073,Iris,Carlson,18961774,1994,32,Funcionarios,1,MA,consequat.enim.diam@natoquepenatibuset.net,augue ac ipsum. Phasellus vitae mauris sit amet lorem semper,FALSO,CARLSON, 
+1074,Hiroko,Mercado,13044406,1994,32,Personal,2,MU,Cras.lorem@Aliquam.org,"per conubia nostra, per inceptos hymenaeos. Mauris ut quam vel",VERDADERO,MERCADO, 
+1075,Mollie,Powell,17662361,1989,37,Funcionarios,1,CA,scelerisque.dui.Suspendisse@posuereenim.edu,mauris. Suspendisse aliquet molestie tellus. Aenean egestas hendrerit neque. In,FALSO,POWELL, 
+1076,Zia,Oneal,19560372,1992,34,Funcionarios,3,M,nulla.ante@Aliquamgravida.edu,Quisque varius. Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada,FALSO,ONEAL,Si corresponde
+1077,Wendy,Shepard,17315884,1998,28,Personal,2,CL,arcu.Sed.et@Sedet.ca,"Mauris molestie pharetra nibh. Aliquam ornare, libero at auctor ullamcorper,",VERDADERO,SHEPARD, 
+1078,Cassady,Mcgowan,16823831,1987,39,Funcionarios,2,CA,Cum.sociis.natoque@scelerisque.co.uk,"sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum, neque",VERDADERO,MCGOWAN, 
+1079,Lucas,Pace,11554694,1995,31,Funcionarios,1,AN,pellentesque.Sed.dictum@Duiselementumdui.co.uk,Phasellus fermentum convallis ligula. Donec luctus aliquet odio. Etiam ligula,FALSO,PACE, 
+1080,Yuri,Chen,19567907,1997,29,Funcionarios,2,AS,lacinia.vitae.sodales@velnislQuisque.ca,"id, erat. Etiam vestibulum massa rutrum magna. Cras convallis convallis",VERDADERO,CHEN, 
+1081,Penelope,Ward,13043119,1995,31,Personal,1,CV,cubilia.Curae@dictum.net,"sed dolor. Fusce mi lorem, vehicula et, rutrum eu, ultrices",FALSO,WARD, 
+1082,Daniel,Macias,19940120,1987,39,Funcionarios,2,CA,vel.quam@faucibusorciluctus.org,"tellus non magna. Nam ligula elit, pretium et, rutrum non,",VERDADERO,MACIAS, 
+1083,Sybill,Hays,11615514,1992,34,Funcionarios,3,MA,gravida.non.sollicitudin@turpisAliquam.ca,"ac facilisis facilisis, magna tellus faucibus leo, in lobortis tellus",FALSO,HAYS,Si corresponde
+1084,Leroy,Grant,20907694,1995,31,Funcionarios,1,CL,dis.parturient@quam.net,pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit,FALSO,GRANT, 
+1085,Donna,Moreno,21175818,1982,44,Personal,3,CV,euismod.ac.fermentum@inaliquet.ca,euismod urna. Nullam lobortis quam a felis ullamcorper viverra. Maecenas,FALSO,MORENO,Si corresponde
+1086,Nola,Everett,18822456,1982,44,Personal,2,CA,dui@Vivamuseuismodurna.org,Praesent eu nulla at sem molestie sodales. Mauris blandit enim,VERDADERO,EVERETT, 
+1087,Quentin,Mccormick,16380643,1977,49,Funcionarios,3,AN,posuere@metus.co.uk,urna suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum,FALSO,MCCORMICK,Si corresponde
+1088,Sylvia,Stewart,18715482,1995,31,Personal,2,CL,et@ultricies.net,"ligula. Donec luctus aliquet odio. Etiam ligula tortor, dictum eu,",VERDADERO,STEWART, 
+1089,Quinn,Bender,11906171,1992,34,Funcionarios,3,AN,adipiscing@Curabiturdictum.com,nulla at sem molestie sodales. Mauris blandit enim consequat purus.,FALSO,BENDER,Si corresponde
+1090,Bree,Prince,15606658,1987,39,Personal,3,CN,vel.venenatis.vel@Aliquameratvolutpat.co.uk,Pellentesque tincidunt tempus risus. Donec egestas. Duis ac arcu. Nunc,FALSO,PRINCE,Si corresponde
+1091,Illana,Swanson,17195622,1995,31,Personal,2,CA,egestas@iaculis.net,Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor,VERDADERO,SWANSON, 
+1092,Karina,Kaufman,12463540,1995,31,Funcionarios,1,AR,aliquam.eu.accumsan@tempor.ca,"dis parturient montes, nascetur ridiculus mus. Proin vel arcu eu",FALSO,KAUFMAN, 
+1093,Fredericka,Goodman,15428624,1996,30,Funcionarios,3,CA,Sed.neque@eleifendCras.com,"hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer,",FALSO,GOODMAN,Si corresponde
+1094,Justine,Ellison,21209714,1995,31,Personal,1,AN,bibendum.fermentum.metus@aptenttaciti.edu,"placerat eget, venenatis a, magna. Lorem ipsum dolor sit amet,",FALSO,ELLISON, 
+1095,Lareina,Byers,14049480,1987,39,Personal,2,CA,tellus.id@cursuspurus.net,"purus. Duis elementum, dui quis accumsan convallis, ante lectus convallis",VERDADERO,BYERS, 
+1096,Julian,Daniels,16963840,1989,37,Funcionarios,2,CA,congue@tellus.edu,sit amet orci. Ut sagittis lobortis mauris. Suspendisse aliquet molestie,VERDADERO,DANIELS, 
+1097,Xaviera,Decker,13437760,1992,34,Funcionarios,3,CV,quam.elementum.at@diam.net,"urna convallis erat, eget tincidunt dui augue eu tellus. Phasellus",FALSO,DECKER,Si corresponde
+1098,Genevieve,Sparks,12295577,1996,30,Funcionarios,1,CV,Quisque.fringilla@bibendumullamcorperDuis.net,"vestibulum lorem, sit amet ultricies sem magna nec quam. Curabitur",FALSO,SPARKS, 
+1099,Troy,Page,14087357,1982,44,Funcionarios,2,CL,feugiat@ligula.edu,quis diam. Pellentesque habitant morbi tristique senectus et netus et,VERDADERO,PAGE, 
+1100,Derek,Bryant,17787932,1995,31,Personal,3,A,dolor.sit@et.co.uk,"Sed congue, elit sed consequat auctor, nunc nulla vulputate dui,",FALSO,BRYANT,Si corresponde

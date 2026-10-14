@@ -1,0 +1,77 @@
+========================================================================================
+UNIVERSIDAD NACIONAL DEL COMAHUE - CRUB / CURZA
+Tecnologías de la Información / Tecnologías de la Información para la Gestión
+TRABAJO PRÁCTICO INTEGRADOR: PLANILLA DE CÁLCULOS (LIBREOFFICE CALC)
+INFORME DE RESOLUCIÓN Y PROPUESTA DE CAPACITACIÓN INSTITUCIONAL
+========================================================================================
+
+1. RESUMEN DE LA RESOLUCIÓN TÉCNICA EN PLANILLA DE CÁLCULO
+----------------------------------------------------------------------------------------
+El trabajo práctico fue desarrollado íntegramente sobre LibreOffice Calc (.ods), 
+cumpliendo estrictamente con las directivas de la cátedra:
+
+* Punto 3: Se eliminó la columna "Marca temporal" (Timestamp) de la matriz de datos original.
+* Punto 4: Se generó la hoja "de 0 a 2 años" mediante Filtro Estándar sobre el campo 
+  "Antigüedad laboral: = 'De 0 a 2 años'", copiando el resultado a la nueva hoja.
+* Punto 5: Se generó la hoja "Más de 10 años" mediante Filtro Estándar sobre el campo 
+  "Antigüedad laboral: = 'Más de 10 años'", copiando el resultado a la nueva hoja.
+* Punto 5.a: Se generó la hoja "Más de 10 años y Linux" aplicando un Filtro Estándar 
+  compuesto con operador lógico "Y" (Antigüedad = "Más de 10 años" Y Sistema Operativo = "Linux").
+* Punto 6: Evaluación de capacitaciones previas mediante filtros y conteo matricial.
+* Punto 7: Cantidad de encuestados con capacitación al momento del ingreso: 72 personas.
+  Fórmula implementada: =CONTAR.SI('Respuestas de formulario 1'.G2:G178; "Sí")
+* Punto 8: Cantidad de encuestados que participaron en capacitación virtual: 105 personas.
+  Fórmula implementada: =CONTAR.SI('Respuestas de formulario 1'.H2:H178; "Si")
+* Punto 10: Tabla Dinámica de modalidades y gráfico estadístico de barras/columnas.
+* Punto 11: Cantidad de interesados por opción de software y matriz de contingencia 
+  cruzando Software vs Modalidad mediante la función =CONTAR.SI.CONJUNTO(...).
+
+----------------------------------------------------------------------------------------
+2. RESPUESTA AL PUNTO 9: ANÁLISIS METODOLÓGICO DE LA FORMULACIÓN DE PREGUNTAS
+----------------------------------------------------------------------------------------
+Pregunta evaluada: "¿Cuál fue tu experiencia en relación a las capacitaciones recibidas?"
+
+Dictamen: NO estuvo bien formulada.
+
+Fundamentación metodológica:
+Se incluyó un campo de texto abierto (cualitativo) dentro de un instrumento tabulado 
+destinado al análisis estadístico en planilla de cálculos. Como consecuencia:
+- Los encuestados expresaron juicios dispares, expresiones coloquiales y faltas de 
+  ortografía (ejemplos reales del archivo: "Muy útiles", "no eh participado", "algunas 
+  buenas y otras no tanto").
+- Resulta imposible operar matemáticamente con funciones automatizadas (=CONTAR.SI), 
+  agrupar en Tablas Dinámicas o graficar directamente sin una tediosa reclasificación 
+  manual de cada caso.
+- Propuesta de reformulación: Debió implementarse una pregunta cerrada con escala 
+  Likert (1 a 5) o con categorías estandarizadas: [Excelente | Muy Buena | Regular | Mala | No aplica].
+
+----------------------------------------------------------------------------------------
+3. INFORME FINAL Y JUSTIFICACIÓN DE LA CAPACITACIÓN PROPUESTA (PUNTO 12)
+----------------------------------------------------------------------------------------
+A partir del análisis integral de los datos recopilados en los 177 encuestados, se 
+estructura la siguiente propuesta de formación para el organismo:
+
+A. Diagnóstico de la Infraestructura Tecnológica y Disponibilidad:
+   - Sistemas Operativos: El 77% (135 agentes) utiliza Windows, el 11% (19) utiliza Linux 
+     y el 12% (21) otros entornos. La solución formativa debe ser multiplataforma.
+   - Disponibilidad horaria: El 84% (147 empleados) dispone de entre 2 y 5 horas semanales.
+   - Experiencia previa: El 60% (105 agentes) ya cuenta con experiencia en entornos virtuales.
+
+B. Software Prioritario Seleccionado:
+   Se propone un plan formativo modular centrado en dos ejes:
+   1) Plataforma Moodle (50 interesados - Opción más votada):
+      Fundamental para consolidar la infraestructura de formación continua, entrega de 
+      documentación y seguimiento pedagógico dentro del organismo.
+   2) Suite Ofimática LibreOffice (Writer con 38 interesados y Calc con 21 interesados, 
+      sumando 59 solicitudes totales):
+      Permite estandarizar el trabajo administrativo tanto en estaciones Windows como en 
+      Linux, reduciendo costos de licenciamiento privativo y promoviendo la interoperabilidad 
+      con formatos abiertos (.odt, .ods).
+
+C. Modalidad y Carga Horaria Propuesta:
+   - Modalidad: Semipresencial / Híbrida (Virtual a través de Moodle con talleres prácticos 
+     en puesto de trabajo). La modalidad virtual pura lideró con 68 solicitudes (39%), 
+     seguida de presencial en el trabajo con 46 (26%) y semipresencial con 40 (23%).
+   - Carga Horaria: 3 horas semanales durante 6 semanas, adaptándose al rango de 2 a 5 horas 
+     declarado por la gran mayoría de la planta laboral.
+========================================================================================
