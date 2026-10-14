@@ -151,7 +151,7 @@ Para que los docentes o usuarios puedan ver los criterios preconfigurados al abr
   - `1A`: Ordenar rango `A4:N108` por Localidad (Field 8) y Dirección (Field 6) con `uno.Any`.
   - `1B`: Ordenar rango `A1:N225` por Curso (Field 2), Sexo (Field 3) y Vivienda (Field 9) con `uno.Any`.
 - **Hojas 2A, 2B y 2C (Filtros estándar):**
-  - `2A`: Contaduría con escalafón 6 a 10. Ordenado nativamente por Apellido (Field 1) y Nombre (Field 2) en `DatabaseRange` mediante `cells.sort(sd)` para persistencia dual de `<table:sort>` y `<table:filter>`. Cursor activo en celda B4 (`Apellido`).
+  - `2A`: Contaduría con escalafón 6 a 10. Ordenado nativamente según consigna docente explícita por Clave 1: Nombre (Field 2, Ascendente) y Clave 2: Apellido (Field 1, Ascendente) en `DatabaseRange` mediante `cells.sort(sd)` para persistencia dual de `<table:sort>` y `<table:filter>`. Cursor activo posicionado dentro de la tabla en celda C4 (`Nombres`).
   - `2B`: Contaduría con escalafón 6.
   - `2C`: Vivienda PROPIA y Electricidad SI.
 - **Hojas 3A y 3B (Tablas Dinámicas y Gráficos Dinámicos con solapitas):**
