@@ -1,6 +1,6 @@
 # Reglas de Operación y Automatización Nativa — LibreOffice y OpenOffice
 
-Esta directiva establece los protocolos y requisitos obligatorios para manipular, resolver trabajos prácticos y automatizar documentos de **LibreOffice Calc, Writer e Impress** desde el entorno del asistente.
+Esta directiva establece los protocolos, pautas pedagógicas y requisitos obligatorios para manipular, resolver trabajos prácticos y automatizar documentos de **LibreOffice Calc, Writer e Impress** desde el entorno del asistente.
 
 ---
 
@@ -140,7 +140,54 @@ Para que los docentes o usuarios puedan ver los criterios preconfigurados al abr
 
 ---
 
-## 9. Guía de Referencia Rápida — Práctica 02 (Planilla de Cálculo)
+## 9. Criterios Pedagógicos, Buenas Prácticas y Pautas de Evaluación de Cátedra
+
+Las docentes de la cátedra enfatizan una serie de reglas operativas, buenas prácticas y advertencias metodológicas determinantes para la aprobación de trabajos prácticos y parciales:
+
+### 9.1. Uso Obligatorio de LibreOffice Calc (Software Libre)
+- **Prohibición de Microsoft Excel:** La cátedra evalúa y califica específicamente bajo el entorno y la sintaxis nativa de **LibreOffice Calc**. Resolver o guardar archivos desde Excel invalida la entrega.
+- **Incompatibilidad de Fórmulas:** Varias funciones difieren en nombre y comportamiento lógico entre ambas suites (por ejemplo, funciones condicionales y lógicas). Aunque una solución funcione en Excel, si falla o genera error en Calc, se considera reprobada.
+- **Apertura de Archivos por Defecto:** Si el sistema operativo tiene instalados ambos programas, el doble clic puede abrir Excel por error. Debe hacerse siempre `Clic derecho > Abrir con > LibreOffice Calc`.
+
+### 9.2. Organización y Gestión de Hojas (Pestañas)
+- **Copiar antes de Modificar (No Mover):** Cada consigna requiere duplicar una hoja base (ej. `Personas`, `Encuestas`). Al acceder a `Mover o copiar hoja...`, **es obligatorio marcar la casilla "Copiar" y no "Mover"**, garantizando que la hoja original permanezca intacta con sus datos fuente.
+- **Nombre Exacto de las Pestañas:** Es indispensable respetar rigurosamente la nomenclatura indicada en las consignas (ej. `1A`, `1B`, `2A`, `2B`, `2C`, `3A`, `3B`, `de 0 a 2 años`, etc.). Los docentes corrigen dirigiéndose directamente a la pestaña específica asignada; si el ejercicio se resolvió en la hoja equivocada o con nombre distorsionado, se califica negativamente.
+- **Contexto de Hoja Activa:** Asegurarse de tener seleccionada y activa la pestaña correspondiente antes de aplicar filtros, ordenamientos o insertar columnas de cálculo.
+
+### 9.3. Fórmulas, Sintaxis y Asistente de Funciones
+- **El Signo Igual (`=`):** Es de uso obligatorio al inicio de cualquier celda de cálculo para que LibreOffice Calc la interprete como expresión evaluable y no como texto plano.
+- **Referencias Absolutas vs. Relativas (`$`):**
+  - **Parámetros fijos externos:** Cuando se vincula un valor fijo ubicado en una celda externa (montos fijos, porcentajes, tasas de descuento, incentivos), **debe fijarse obligatoriamente con el signo pesos** (ej. `$C$1`, `$C$2`) utilizando la tecla `F4`.
+  - **Celdas variables por fila:** Las referencias a datos del registro individual (horas, legajo, escalafón) deben conservarse relativas (sin `$`) para que se adapten automáticamente al arrastrarse hacia abajo.
+- **Cadenas de Texto entre Comillas Dobles (`" "`):** Todo texto dentro de una condición o argumento funcional (como `"F"`, `"M"`, `"Nivel 1"`, `"Sí"`, `"No"`) debe escribirse obligatoriamente entre comillas dobles. Su omisión genera inmediatamente los errores `#¿NOMBRE?` o `#¡VALOR!`.
+- **Sensibilidad a Acentos y Tildes:** En funciones de búsqueda y conteo condicional (`CONTAR.SI`, `CONTAR.SI.CONJUNTO`), el criterio debe coincidir de forma idéntica con el texto original en los datos: `"Sí"` con tilde es tratado como un valor distinto de `"Si"` sin tilde.
+- **Separadores Sintácticos (`:` vs. `;`):**
+  - Los **dos puntos (`:`)** definen un rango continuo de celdas (ej. `A4:A108`, `G2:G178`).
+  - El **punto y coma (`;`)** se utiliza obligatoriamente para separar argumentos funcionales o celdas individuales disjuntas.
+- **Asistente para Funciones (`fx`):** Se recomienda utilizar el asistente (`Insertar > Función...` o `Ctrl + F2`) cuando existan dudas sobre la estructura de la función, verificando en la vista previa del diálogo que el resultado sea válido antes de presionar *Aceptar*.
+
+### 9.4. Selección para Ordenar y Filtrar
+- **Posicionarse dentro de la Tabla:** Antes de ejecutar `Datos > Ordenar...` o `Datos > Más filtros > Filtro estándar...`, el cursor debe posicionarse obligatoriamente sobre cualquier celda con datos de la tabla o en su fila de encabezados (nunca en celdas vacías o periféricas). Esto garantiza que Calc reconozca el rango de datos completo y conserve los encabezados de columna.
+- **Filtro Automático vs. Filtro Estándar:**
+  - **Filtro Automático:** Recomendado para selecciones rápidas o valores puntuales discretos.
+  - **Filtro Estándar:** De uso obligatorio cuando la consigna solicita rangos numéricos continuos (ej. escalafón entre 6 y 10) o condiciones combinadas complejas con operadores lógicos (`Y` / `O`).
+
+### 9.5. Tablas Dinámicas y Gráficos Estadísticos
+- **Exclusión Estricta de Totales Generales:** Al seleccionar datos de una tabla o tabla dinámica para confeccionar un gráfico, **nunca se debe incluir la fila o columna de 'Total general' o resultados acumulados**. Incluir los totales duplica visualmente la escala y arruina la proporcionalidad de las barras o sectores.
+- **Elementos Obligatorios del Gráfico:** Un gráfico no debe consistir en elementos vacíos; debe contar obligatoriamente con:
+  1. Título descriptivo claro y temático.
+  2. Nombres explícitos en los ejes (eje X horizontal y eje Y vertical).
+  3. Etiquetas de datos numéricas sobre barras o sectores, formateadas con los decimales adecuados (generalmente 2 decimales para promedios o porcentajes).
+
+### 9.6. Hábitos Operativos y Atajos Clave
+- **Guardar Cambios Frecuentemente (`Ctrl + G`):** Guardar con periodicidad regular para proteger el progreso.
+- **Navegación Rápida (`Ctrl + Flecha abajo`):** Desplazarse al instante hasta la última fila con datos sin tener que hacer scroll manual a lo largo de tablas extensas.
+- **Autocompletado de Fórmulas:** Hacer doble clic en la esquina inferior derecha de la celda activa (cuadro de llenado) para autocompletar fórmulas hacia toda la columna de manera instantánea.
+- **Resolución de Columnas Estrechas (`###`):** Si una columna visualiza numerales (`###`), no constituye un error de cálculo, sino ancho insuficiente de la celda; se resuelve haciendo doble clic en la línea divisoria del encabezado de columna o seleccionando *Ancho óptimo*.
+
+---
+
+## 10. Guía de Referencia Rápida — Práctica 02 (Planilla de Cálculo)
 - **Hoja personas:**
   - `Sueldo` (Col L): `=K{row}*$C$1` (referencia absoluta al Monto fijo de `$1875` en `$C$1`).
   - `Descuento` (Col M): `=L{row}*$C$2` (referencia absoluta al `22,00%` en `$C$2`).
@@ -151,7 +198,7 @@ Para que los docentes o usuarios puedan ver los criterios preconfigurados al abr
   - `1A`: Ordenar rango `A4:N108` por Localidad (Field 8) y Dirección (Field 6) con `uno.Any`.
   - `1B`: Ordenar rango `A1:N225` por Curso (Field 2), Sexo (Field 3) y Vivienda (Field 9) con `uno.Any`.
 - **Hojas 2A, 2B y 2C (Filtros estándar):**
-  - `2A`: Contaduría con escalafón 6 a 10. Ordenado nativamente por Apellido (Field 1) y Nombre (Field 2) en `DatabaseRange` mediante `cells.sort(sd)` para persistencia dual de `<table:sort>` y `<table:filter>`. Cursor activo en celda B4 (`Apellido`).
+  - `2A`: Contaduría con escalafón 6 a 10. Ordenado nativamente según consigna docente explícita por Clave 1: Nombre (Field 2, Ascendente) y Clave 2: Apellido (Field 1, Ascendente) en `DatabaseRange` mediante `cells.sort(sd)` para persistencia dual de `<table:sort>` y `<table:filter>`. Cursor activo posicionado dentro de la tabla en celda C4 (`Nombres`).
   - `2B`: Contaduría con escalafón 6.
   - `2C`: Vivienda PROPIA y Electricidad SI.
 - **Hojas 3A y 3B (Tablas Dinámicas y Gráficos Dinámicos con solapitas):**
@@ -160,7 +207,7 @@ Para que los docentes o usuarios puedan ver los criterios preconfigurados al abr
 
 ---
 
-## 10. Guía de Referencia Rápida — Práctica 03 (Planilla de Cálculo)
+## 11. Guía de Referencia Rápida — Práctica 03 (Planilla de Cálculo)
 - **Hoja Respuestas de formulario 1:**
   - `Punto 3`: Eliminación obligatoria de la columna A (`Timestamp` / `Marca temporal`), dejando 25 columnas de datos (Col A a Col Y) y 178 filas (177 respuestas encuestadas).
   - Registrar rango de base de datos formal: `doc.DatabaseRanges.addNewByName("Tabla_Encuesta_Base", cellRangeAddress)` con `ContainsHeader = True` y `refresh()`.
