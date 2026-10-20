@@ -27,13 +27,20 @@
   - `Incentivo` (Col N): `=IF(K{row}>7; 1700; 0)`.
 - **Hoja encuestas:**
   - `Calculo` (Col N): `=IF(MOD(A{row}; 2)=0; E{row}*2; E{row})`.
-- **Hojas 1A y 1B (Ordenamiento múltiple):**
-  - `1A`: Ordenar `A4:N108` por Localidad (Field 8) y Dirección (Field 6) con `uno.Any`.
-  - `1B`: Ordenar `A1:N225` por Curso (Field 2), Sexo (Field 3) y Vivienda (Field 9) con `uno.Any`.
-- **Hojas 2A, 2B y 2C (Filtros estándar):**
-  - `2A`: Contaduría con escalafón 6 a 10. Ordenado nativamente según consigna docente por **Clave 1: Nombre (Field 2, Ascendente)** y **Clave 2: Apellido (Field 1, Ascendente)** en `DatabaseRange` con `cells.sort(sd)`. Cursor activo en `C4` (`Nombres`).
-  - `2B`: Contaduría con escalafón 6.
-  - `2C`: Vivienda PROPIA y Electricidad SI.
+- **Hojas 1A y 1B (Ordenamiento múltiple con TableSortField):**
+  - **Requisito crítico:** Usar siempre `uno.createUnoStruct("com.sun.star.table.TableSortField")` con `.IsAscending = True` (prohibido `com.sun.star.util.SortField` o `.SortAscending`, que fallan silenciosamente).
+  - `1A`: Ordenar `A4:N108` por Localidad (Field 8) y Dirección (Field 6) con `uno.Any("[]com.sun.star.table.TableSortField", (sf1, sf2))`.
+  - `1B`: Ordenar `A1:N225` por Curso (Field 2), Sexo (Field 3) y Vivienda (Field 9) con `uno.Any("[]com.sun.star.table.TableSortField", (sf1, sf2, sf3))`.
+- **Hojas 2A, 2B y 2C (Filtros estándar y ordenamiento):**
+  - `2A`: Contaduría con escalafón 6 a 10.
+    - **Ordenamiento dual obligatorio:** Ordenar el rango de datos `A4:N109` antes o después de filtrar usando `com.sun.star.table.TableSortField`:
+      - Clave 1: Apellido (`Field = 1`, `IsAscending = True`)
+      - Clave 2: Nombres (`Field = 2`, `IsAscending = True`)
+      - Envoltura: `uno.Any("[]com.sun.star.table.TableSortField", (sf1, sf2))`.
+    - **Preservación de filas 1 a 4:** Ejecutar siempre `for r in range(4): sheet.getRows().getByIndex(r).setPropertyValue("IsVisible", True)` para evitar que el filtro colapse los encabezados y parámetros externos (`$C$1`, `$C$2`).
+    - **Cursor:** Posicionar en celda interna de datos o encabezado (ej. `B4` o `C4`).
+  - `2B`: Contaduría con escalafón 6. Restaurar visibilidad de filas 1 a 4 tras filtrar.
+  - `2C`: Vivienda PROPIA y Electricidad SI. Restaurar visibilidad de filas 1 a 4 tras filtrar.
 - **Hojas 3A y 3B (Tablas Dinámicas y Pivot Charts con solapitas):**
   - `3A`: Tabla Dinámica de Vivienda (Alquila: 507, Propia: 611) + Gráfico Dinámico vertical (`X = 38000`, `Y = 5000`) con `loext:data-pilot-source="TablaDinamica_3A"` (`Vivienda ▼`, `Datos ▼`).
   - `3B`: Tabla Dinámica de Sueldo Promedio por Sección + Gráfico Dinámico vertical (`X = 11000`, `Y = 1500`) con `loext:data-pilot-source="TablaDinamica_3B"` (`Sección ▼`, `Datos ▼`).

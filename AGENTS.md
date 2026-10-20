@@ -23,17 +23,22 @@ Las reglas detalladas operativas se encuentran modularizadas en la carpeta [`.ag
 3. **Tablas Dinámicas (DataPilot) y Gráficos Dinámicos con Solapas Desplegables:**
    - Todo agrupamiento, resumen o categorización debe resolverse con `sheet.getDataPilotTables().insertNewByName(...)`. Prohibido simular con fórmulas manuales cuando se pide tabla dinámica.
    - Todo gráfico vinculado a una Tabla Dinámica debe ser un **Pivot Chart oficial**, inyectando en su XML el atributo nativo `loext:data-pilot-source="<NombreTablaDinamica>"`. Esto activa las solapas de filtrado interactivas (`Campo ▼`, `Datos ▼`).
+   - **Prohibido usar `chart.getData().setData(...)`:** Dicho método desconecta el gráfico de la planilla y crea un `<table:table table:name="local-table">` estático con `xlink:href="."`. El gráfico DEBE vincularse pasando directamente la tupla de rango vivo `(dp_range,)` a `addNewByName(..., True, True)` con `xlink:href=".."`.
    - Jamás incluir la fila ni columna de "Total general" en los rangos del gráfico.
 
-4. **Persistencia Dual de Filtros Estándar:**
+4. **Persistencia Dual de Filtros Estándar y Preservación de Encabezados (Filas 1 a 4):**
+   - **Preservación de la parte superior:** Al aplicar filtros estándar en una hoja, Calc evalúa las filas de parámetros y encabezados y suele colapsarlas/ocultarlas (`IsVisible = False`). Es **estrictamente obligatorio** restaurar la visibilidad de todas las filas de título, parámetros y encabezados (ej. `for r in range(4): sheet.getRows().getByIndex(r).setPropertyValue("IsVisible", True)`). La parte superior de la tabla NUNCA debe faltar ni estar oculta.
    - Registrar siempre un `DatabaseRange` con `doc.DatabaseRanges.addNewByName(...)`.
    - Asignar `TableFilterField` y ejecutar `refresh()`.
    - Garantizar que el cursor activo en la hoja quede situado dentro del rango de datos o fila de encabezados para que Calc abra el diálogo con los filtros visibles.
 
-5. **Ordenamiento Nativo con Envoltura `uno.Any`:**
-   - Al configurar `SortFields` en un `SortDescriptor`, envolver siempre con:
+5. **Ordenamiento Nativo — `TableSortField` Obligatorio con `uno.Any`:**
+   - **Prohibición terminante de `com.sun.star.util.SortField`:** En rangos de hojas de cálculo (`SheetCellRange`), `com.sun.star.util.SortField` falla silenciosamente y NO ordena los datos.
+   - Usar **exclusivamente** `uno.createUnoStruct("com.sun.star.table.TableSortField")`.
+   - Al configurar `SortFields` en el descriptor de ordenamiento, envolver siempre con:
      `uno.Any("[]com.sun.star.table.TableSortField", (sf1, sf2))`
      (la asignación de tupla directa de Python falla en silencio).
+   - Configurar claves múltiples respetando estrictamente la jerarquía solicitada (ej. Clave 1 = Apellido, Clave 2 = Nombres).
 
 6. **Fórmulas y Localización:**
    - En el API UNO (`cell.setFormula(...)`), los nombres de función van siempre en **inglés estándar**: `=COUNTIF(...)`, `=COUNTIFS(...)`, `=SUM(...)`, `=AVERAGE(...)`, `=IF(...)`, `=MOD(...)`. Calc los traduce automáticamente al español en la interfaz.

@@ -23,6 +23,14 @@ Para que los docentes o usuarios vean los criterios preconfigurados al abrir `Da
    - Sincronizar en `content.xml` el rango anónimo interno (`__Anonymous_Sheet_DB__<Index>`) con sus condiciones `<table:filter-and>`, para que Calc asocie los filtros ante cualquier clic.
 4. **Copia de Resultados a Hojas Nuevas:**
    - Si la consigna exige volcar el filtro en hoja nueva, usar `CopyOutputData = True` apuntando a la dirección de destino, asegurando que ambas hojas tengan su propio `DatabaseRange` registrado.
+5. **Preservación Obligatoria de Filas Superiores (Encabezados y Parámetros):**
+   - Al ejecutar un filtro a nivel de hoja, Calc evalúa las filas anteriores al rango de datos contra el criterio. Si la fila 4 es el encabezado y las filas 1 a 3 contienen títulos o parámetros (ej. `$C$1`, `$C$2`), Calc oculta esas filas (`IsVisible = False`), provocando que la tabla parezca "recortada" o sin su encabezado.
+   - **Regla Estricta:** Inmediatamente después de aplicar cualquier filtro estándar a una hoja, restaurar de forma explícita la visibilidad de todas las filas previas a los registros:
+     ```python
+     # Si el encabezado está en la fila 4 (índice 3), restaurar filas 0 a 3:
+     for r in range(header_row_index + 1):
+         sheet.getRows().getByIndex(r).setPropertyValue("IsVisible", True)
+     ```
 
 ---
 
@@ -63,20 +71,53 @@ Al invocar `cell.setFormula(...)`, **suministrar siempre el nombre de función e
 
 # 6. Tablas Dinámicas y Pivot Charts con Solapas de Filtrado
 - **Obligatoriedad Absoluta de DataPilot Real:** En cualquier consigna donde se resuman o agrupen registros por categorías con gráfico comparativo, **es mandatorio generar una Tabla Dinámica nativa (`DataPilotTable`) y vincular el gráfico como Gráfico Dinámico (Pivot Chart)**. Queda prohibido simular con fórmulas estáticas.
-- **Protocolo UNO:**
+- **Protocolo UNO Nativo:**
   1. `dp_desc = sheet.getDataPilotTables().createDataPilotDescriptor()`.
   2. `dp_desc.setSourceRange(cellRangeAddress)`.
   3. Campos: `Orientation = ROW`, datos con `Function = COUNT | SUM | AVERAGE`.
   4. Inserción: `sheet.getDataPilotTables().insertNewByName("<Nombre>", outAddr, dp_desc)`.
-  5. Gráfico Dinámico: Asignar `dp_table.getOutputRange()` como rango del gráfico.
-  6. Inyección quirúrgica ODF en `<chart:chart ... loext:data-pilot-source="<NombreTD>">` dentro del `content.xml` del gráfico para activar las solapas interactivas desplegables (`<Campo> ▼`, `Datos ▼`).
+  5. Obtención de rango: Determinar `chart_rng` a partir del rango del DataPilot pero **excluyendo estrictamente la fila y columna de 'Total general'**.
+  6. Inserción del Gráfico Dinámico:
+     `sheet.getCharts().addNewByName(name, rect, (chart_rng,), True, True)`.
+- **Prohibición Terminante de `chart.getData().setData(...)`:**
+  - **Causa del fallo:** Ejecutar `.setData(...)` desconecta el gráfico de los datos vivos de la hoja y genera una tabla interna estática `<table:table table:name="local-table">` con `xlink:href="."`. Esto destruye el carácter dinámico del Pivot Chart.
+  - **Regla:** El gráfico debe alimentarse exclusivamente del rango vivo de celdas registrado en su creación.
+- **Inyección de Atributo Pivot Chart (`loext:data-pilot-source`):**
+  - En el archivo `content.xml` interno del gráfico (`Object 1/content.xml`):
+    - Asegurar que `<chart:chart>` mantenga `xlink:href=".."` (apuntando al documento contenedor).
+    - Inyectar el atributo `loext:data-pilot-source="<NombreDataPilot>"`.
+    - Esto activa en la interfaz de Calc los botones desplegables nativos de filtrado (`<NombreCampo> ▼` y `Datos ▼`).
 
 ---
 
-# 7. Ordenamiento Nativo de Rangos (uno.Any)
-La propiedad `SortFields` de un `SortDescriptor` debe envolverse obligatoriamente con `uno.Any`:
+# 7. Ordenamiento Nativo de Rangos (TableSortField con uno.Any)
+- **Prohibición Estricta de `com.sun.star.util.SortField`:**
+  En hojas de cálculo (`SheetCellRange`), el struct `com.sun.star.util.SortField` **falla silenciosamente** (no produce error pero no ordena las filas).
+- **Uso Obligatorio de `com.sun.star.table.TableSortField`:**
+  Para ordenar rangos en Calc, se debe instanciar `com.sun.star.table.TableSortField` y envolver la tupla en `uno.Any`:
 ```python
-p.Value = uno.Any("[]com.sun.star.table.TableSortField", (sf1, sf2))
+sort_desc = rng.createSortDescriptor()
+
+# Clave 1: Ej. Apellido (Columna B -> Field = 1)
+sf1 = uno.createUnoStruct("com.sun.star.table.TableSortField")
+sf1.Field = 1
+sf1.IsAscending = True
+sf1.IsCaseSensitive = False
+
+# Clave 2: Ej. Nombres (Columna C -> Field = 2)
+sf2 = uno.createUnoStruct("com.sun.star.table.TableSortField")
+sf2.Field = 2
+sf2.IsAscending = True
+sf2.IsCaseSensitive = False
+
+# Asignación obligatoria mediante uno.Any
+for prop in sort_desc:
+    if prop.Name == "SortFields":
+        prop.Value = uno.Any("[]com.sun.star.table.TableSortField", (sf1, sf2))
+    elif prop.Name == "ContainsHeader":
+        prop.Value = True
+
+# Ejecución del ordenamiento
 rng.sort(tuple(sort_desc))
 ```
 
