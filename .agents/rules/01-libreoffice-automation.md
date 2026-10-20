@@ -6,6 +6,7 @@
 - **Intérprete Python con UNO:** `C:\Program Files\LibreOffice\program\python.exe`
 - **Protocolo de conexión:** Conectar siempre mediante named pipes o sockets locales:
   `soffice.exe --headless --accept="pipe,name=<nombre_pipe>;urp;StarOffice.ComponentContext"`
+- **Framework Oficial de Automatización:** Se dispone del módulo centralizado [`tools/calc_toolkit.py`](file:///c:/Users/Ramoncito/.antigravity-ide/Open%20Officce/tools/calc_toolkit.py) que encapsula sesiones UNO, ordenamientos con `TableSortField`, filtros con preservación de encabezados, DataPilot / Pivot Charts y auditoría automatizada (`audit_workbook`). Usar prioritariamente este toolkit para resoluciones limpias y ultrarrápidas (< 1 min).
 - **Prohibición de librerías genéricas e IAs convencionales:** Queda estrictamente prohibido usar librerías genéricas de Python como `pandas` o reescribir manualmente el XML interno con serializadores genéricos (`xml.etree.ElementTree`, `minidom`) que no respeten los 30+ namespaces de OpenDocument (ODF), ya que destruyen los rangos de base de datos, metadatos y corrompen las fórmulas (`Err:510`).
 
 ---

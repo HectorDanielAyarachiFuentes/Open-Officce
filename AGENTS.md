@@ -15,6 +15,7 @@ Las reglas detalladas operativas se encuentran modularizadas en la carpeta [`.ag
    - Ejecutable: `C:\Program Files\LibreOffice\program\soffice.exe`
    - Intérprete: `C:\Program Files\LibreOffice\program\python.exe`
    - Conexión: named pipe local (`soffice.exe --headless --accept="pipe,name=...;urp;StarOffice.ComponentContext"`).
+   - **Toolkit Oficial:** Utilizar prioritariamente [`tools/calc_toolkit.py`](file:///c:/Users/Ramoncito/.antigravity-ide/Open%20Officce/tools/calc_toolkit.py) para automatizaciones directas y auditorías de entrega.
    - **Prohibido:** Usar librerías genéricas (`pandas`, `openpyxl`) o re-serializar `content.xml` con `xml.etree` (evita corrupción de namespaces y el error `Err:510`).
 
 2. **Prohibición Terminante de Microsoft Excel:**
