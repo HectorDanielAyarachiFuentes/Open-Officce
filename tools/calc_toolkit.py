@@ -357,7 +357,7 @@ def inject_pivot_chart_loext(ods_path: str, datapilot_name: str):
     with zipfile.ZipFile(abs_path, 'r') as zin, zipfile.ZipFile(tmp_path, 'w', compression=zipfile.ZIP_DEFLATED) as zout:
         for item in zin.infolist():
             data = zin.read(item.filename)
-            if item.filename.startswith("Object ") and item.filename.endswith("content.xml"):
+            if item.filename.endswith("content.xml") and item.filename != "content.xml":
                 text = data.decode("utf-8")
                 # Asegurar enlace ascendente
                 text = text.replace('xlink:href="."', 'xlink:href=".."')
