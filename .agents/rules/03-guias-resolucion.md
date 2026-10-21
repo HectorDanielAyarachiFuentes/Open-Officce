@@ -81,3 +81,21 @@
   - `P7-c`: `régimen = 'Funcionarios'` Y `región = 'CL'` (3 registros + encabezado). `Datos_P7_c`.
 - **Exportación CSV (Punto 10 - Looker Studio):**
   - `final-TIC2024.csv` exportado con 14 columnas completas y 101 filas en codificación UTF-8 limpia.
+
+---
+
+# 5. Final (Talentia HR — Transformación Digital y Capacitación)
+- **Hoja prueba (Base de datos enriquecida):**
+  - `apellido` (Col C): Texto normalizado a letras **MAYÚSCULAS** (`transform_column_text(sheet, 2)`).
+  - `edad` (Col F): `=YEAR(TODAY())-E{row}` formateada como entero numérico.
+  - `tipo_categoria` (Col L): `=IF(MOD(H{row}; 2)=0; "PAR"; "IMPAR")` (previene `Err:504`).
+  - `modalidad_capacitacion` (Col M): `=IF(H{row}>=3; "Presencial / Taller Intensivo"; "Virtual Asincrónica")`.
+  - `prioridad_formacion` (Col N): `=IF(H{row}>=3; "Alta Prioridad"; "Prioridad Estándar")`.
+  - `DatabaseRange`: `Tabla_Nomina` (`A1:N101`) con `AutoFilter = True`.
+- **Hojas de Filtros Independientes (`copy_filtered_sheet`):**
+  - `Filtro a`: Funcionarios y región `CV` (4 registros + encabezado). `DatabaseRange: Filtro_a`.
+  - `Filtro b`: Personal y región `CM` o `A` (2 registros + encabezado). `DatabaseRange: Filtro_b`.
+- **Hoja Resumen:**
+  - Tablas con `=COUNTIFS(...)` para Funcionarios sobre modalidad (20 presencial, 29 virtual) y Personal sobre prioridad (19 alta, 32 estándar).
+  - Detalle curricular por nivel y DataPilot nativo `TD_Propuesta_Formativa` con Pivot Chart dinámico (`loext:data-pilot-source`).
+  - Ubicación de entrega: carpeta `Final/Solucion/final.ods` y `Solucion/final.ods`.

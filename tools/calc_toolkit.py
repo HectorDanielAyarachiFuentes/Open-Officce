@@ -436,3 +436,257 @@ def audit_workbook(doc) -> Dict[str, Any]:
         "issues_count": len(issues),
         "issues": issues
     }
+
+
+# ==============================================================================
+# 6. HIGH-LEVEL AUTOMATION HELPERS & UNIVERSAL EXAM SOLVER
+# ==============================================================================
+
+def auto_detect_data_bounds(sheet, header_row: int = 0) -> Tuple[int, int]:
+    """Detecta dinámicamente el número de columnas y filas con datos en una hoja."""
+    cursor = sheet.createCursor()
+    cursor.gotoEndOfUsedArea(False)
+    total_cols = cursor.RangeAddress.EndColumn + 1
+    total_rows = cursor.RangeAddress.EndRow + 1
+    return total_cols, total_rows
+
+
+def transform_column_text(sheet, col_idx: int, transform_fn=str.upper, start_row: int = 1, end_row: Optional[int] = None):
+    """
+    Transforma texto de una columna en bloque (ej. mayúsculas, minúsculas, strip).
+    start_row: índice 0-based de la primera fila de datos (ej. 1 para fila 2).
+    """
+    if end_row is None:
+        _, total_rows = auto_detect_data_bounds(sheet)
+        end_row = total_rows
+        
+    for r in range(start_row, end_row):
+        cell = sheet.getCellByPosition(col_idx, r)
+        val = cell.getString().strip()
+        if val:
+            cell.setString(transform_fn(val))
+
+
+def add_calculated_column(
+    sheet,
+    col_idx: int,
+    header_name: str,
+    formula_template: str,
+    number_format: Optional[int] = None,
+    start_row: int = 1,
+    end_row: Optional[int] = None
+):
+    """
+    Agrega una columna calculada completa con encabezado y fórmulas dinámicas.
+    formula_template usa '{row}' para la fila actual en Calc (1-based).
+    Ej: formula_template='=YEAR(TODAY())-E{row}' o '=IF(MOD(H{row}; 2)=0; "PAR"; "IMPAR")'.
+    """
+    if end_row is None:
+        _, total_rows = auto_detect_data_bounds(sheet)
+        end_row = total_rows
+
+    # Encabezado
+    h_cell = sheet.getCellByPosition(col_idx, 0)
+    h_cell.setString(header_name)
+    
+    # Fórmulas
+    for r in range(start_row, end_row):
+        calc_row = r + 1
+        cell = sheet.getCellByPosition(col_idx, r)
+        formula = formula_template.replace("{row}", str(calc_row))
+        cell.setFormula(formula)
+        if number_format is not None:
+            cell.setPropertyValue("NumberFormat", number_format)
+
+
+def copy_filtered_sheet(
+    doc,
+    src_sheet,
+    target_sheet_name: str,
+    condition_fn,
+    filter_fields_config: List[Dict[str, Any]],
+    db_range_name: str,
+    formula_overrides: Optional[Dict[int, str]] = None,
+    header_style: Optional[Dict[str, Any]] = None
+) -> Tuple[Any, int]:
+    """
+    Copia registros que cumplan condition_fn a una nueva hoja con encabezados y DatabaseRange.
+    - Preserva automáticamente valores numéricos reales (.setValue) y tipos de celdas.
+    - Soporta formula_overrides {col_idx: formula_template} para recalcular sobre la fila de destino.
+    - Registra el DatabaseRange con ContainsHeader=True y sus TableFilterField nativos.
+    """
+    import uno
+    sheets = doc.getSheets()
+    if sheets.hasByName(target_sheet_name):
+        sheets.removeByName(target_sheet_name)
+    sheets.insertNewByName(target_sheet_name, sheets.getCount())
+    target_sheet = sheets.getByName(target_sheet_name)
+
+    total_cols, total_rows = auto_detect_data_bounds(src_sheet)
+
+    # Copiar encabezados
+    for c in range(total_cols):
+        target_sheet.getCellByPosition(c, 0).setString(src_sheet.getCellByPosition(c, 0).getString())
+
+    dest_row_idx = 1
+    for r in range(1, total_rows):
+        if condition_fn(src_sheet, r):
+            calc_r = dest_row_idx + 1
+            for c in range(total_cols):
+                if formula_overrides and c in formula_overrides:
+                    f_tpl = formula_overrides[c]
+                    target_sheet.getCellByPosition(c, dest_row_idx).setFormula(f_tpl.replace("{row}", str(calc_r)))
+                else:
+                    src_c = src_sheet.getCellByPosition(c, r)
+                    src_type = src_c.getType().value
+                    if src_type == "VALUE":
+                        target_sheet.getCellByPosition(c, dest_row_idx).setValue(src_c.getValue())
+                    elif src_type == "FORMULA":
+                        target_sheet.getCellByPosition(c, dest_row_idx).setFormula(src_c.getFormula())
+                    else:
+                        target_sheet.getCellByPosition(c, dest_row_idx).setString(src_c.getString())
+            dest_row_idx += 1
+
+    # Estilo de encabezados
+    h_range = target_sheet.getCellRangeByPosition(0, 0, total_cols - 1, 0)
+    h_range.setPropertyValue("CharWeight", 150.0) # Bold
+    bg_color = header_style.get("bg_color", 0x1B365D) if header_style else 0x1B365D
+    txt_color = header_style.get("txt_color", 0xFFFFFF) if header_style else 0xFFFFFF
+    h_range.setPropertyValue("CellBackColor", bg_color)
+    h_range.setPropertyValue("CharColor", txt_color)
+    h_range.setPropertyValue("HoriJustify", uno.Enum("com.sun.star.table.CellHoriJustify", "CENTER"))
+
+    for c in range(total_cols):
+        target_sheet.getColumns().getByIndex(c).setPropertyValue("OptimalWidth", True)
+
+    # DatabaseRange formal
+    db_ranges = doc.DatabaseRanges
+    if db_ranges.hasByName(db_range_name):
+        db_ranges.removeByName(db_range_name)
+    addr = uno.createUnoStruct("com.sun.star.table.CellRangeAddress")
+    addr.Sheet = target_sheet.RangeAddress.Sheet
+    addr.StartColumn = 0
+    addr.StartRow = 0
+    addr.EndColumn = total_cols - 1
+    addr.EndRow = max(dest_row_idx - 1, 1)
+    db_ranges.addNewByName(db_range_name, addr)
+
+    dbr = db_ranges.getByName(db_range_name)
+    fd = dbr.getFilterDescriptor()
+    fd.setPropertyValue("ContainsHeader", True)
+
+    ff_list = []
+    for cfg in filter_fields_config:
+        ff = uno.createUnoStruct("com.sun.star.sheet.TableFilterField")
+        ff.Field = cfg["field"]
+        ff.Operator = cfg.get("operator", uno.Enum("com.sun.star.sheet.FilterOperator", "EQUAL"))
+        ff.IsNumeric = cfg.get("is_numeric", False)
+        if ff.IsNumeric:
+            ff.NumericValue = float(cfg["value"])
+        else:
+            ff.StringValue = str(cfg["value"])
+        conn_str = cfg.get("connection", "AND").upper()
+        ff.Connection = uno.Enum("com.sun.star.sheet.FilterConnection", conn_str)
+        ff_list.append(ff)
+
+    fd.setFilterFields(tuple(ff_list))
+    dbr.refresh()
+
+    return target_sheet, dest_row_idx - 1
+
+
+def create_datapilot_and_pivot_chart(
+    doc,
+    target_sheet,
+    src_sheet,
+    dp_name: str,
+    chart_name: str,
+    src_coords: Tuple[int, int, int, int],
+    dp_dest_cell: Tuple[int, int],
+    row_fields: List[int],
+    col_fields: List[int],
+    data_fields: List[Tuple[int, str]],
+    chart_rect: Tuple[int, int, int, int],
+    chart_title: str = ""
+):
+    """
+    Crea una Tabla Dinámica nativa y su correspondiente Gráfico Dinámico vinculado
+    excluyendo automáticamente los totales generales del rango del gráfico.
+    chart_rect: (x, y, width, height) en 1/100 mm.
+    """
+    import uno
+    dp_tables = target_sheet.getDataPilotTables()
+    if dp_tables.hasByName(dp_name):
+        dp_tables.removeByName(dp_name)
+
+    dp_desc = dp_tables.createDataPilotDescriptor()
+    sc, sr, ec, er = src_coords
+    src_addr = uno.createUnoStruct("com.sun.star.table.CellRangeAddress")
+    src_addr.Sheet = src_sheet.RangeAddress.Sheet
+    src_addr.StartColumn = sc
+    src_addr.StartRow = sr
+    src_addr.EndColumn = ec
+    src_addr.EndRow = er
+    dp_desc.setSourceRange(src_addr)
+
+    for rf in row_fields:
+        dp_desc.getDataPilotFields().getByIndex(rf).setPropertyValue(
+            "Orientation", uno.Enum("com.sun.star.sheet.DataPilotFieldOrientation", "ROW")
+        )
+
+    for cf in col_fields:
+        dp_desc.getDataPilotFields().getByIndex(cf).setPropertyValue(
+            "Orientation", uno.Enum("com.sun.star.sheet.DataPilotFieldOrientation", "COLUMN")
+        )
+
+    for df_idx, fn_name in data_fields:
+        df = dp_desc.getDataPilotFields().getByIndex(df_idx)
+        df.setPropertyValue("Orientation", uno.Enum("com.sun.star.sheet.DataPilotFieldOrientation", "DATA"))
+        df.setPropertyValue("Function", uno.Enum("com.sun.star.sheet.GeneralFunction", fn_name.upper()))
+
+    dest_addr = uno.createUnoStruct("com.sun.star.table.CellAddress")
+    dest_addr.Sheet = target_sheet.RangeAddress.Sheet
+    dest_addr.Column = dp_dest_cell[0]
+    dest_addr.Row = dp_dest_cell[1]
+
+    dp_tables.insertNewByName(dp_name, dest_addr, dp_desc)
+    doc.calculateAll()
+
+    # Rango vivo para el gráfico (excluyendo fila y columna de 'Total Resultado')
+    # DataPilot estándar de 2 filas y 2 columnas con fila de filtro:
+    # Encabezado de columnas en dest_addr.Row + 3
+    # Datos en dest_addr.Row + 4 a dest_addr.Row + 5
+    charts = target_sheet.getCharts()
+    if charts.hasByName(chart_name):
+        charts.removeByName(chart_name)
+
+    rect = uno.createUnoStruct("com.sun.star.awt.Rectangle")
+    rect.X, rect.Y, rect.Width, rect.Height = chart_rect
+
+    chart_addr = uno.createUnoStruct("com.sun.star.table.CellRangeAddress")
+    chart_addr.Sheet = target_sheet.RangeAddress.Sheet
+    chart_addr.StartColumn = dp_dest_cell[0]
+    chart_addr.StartRow = dp_dest_cell[1] + 3
+    chart_addr.EndColumn = dp_dest_cell[0] + max(len(col_fields) + 1, 2)
+    chart_addr.EndRow = dp_dest_cell[1] + 3 + max(len(row_fields) + 1, 2)
+
+    charts.addNewByName(chart_name, rect, (chart_addr,), True, True)
+    chart_obj = charts.getByName(chart_name).getEmbeddedObject()
+
+    if chart_title:
+        chart_obj.setPropertyValue("HasMainTitle", True)
+        chart_obj.Title.String = chart_title
+
+    diagram = chart_obj.getFirstDiagram()
+    if diagram:
+        try:
+            diagram.Wall.setPropertyValue("FillStyle", uno.Enum("com.sun.star.drawing.FillStyle", "NONE"))
+        except Exception:
+            pass
+        try:
+            diagram.setPropertyValue("DataCaption", 1)
+        except Exception:
+            pass
+
+    return dp_tables.getByName(dp_name), charts.getByName(chart_name)
+
