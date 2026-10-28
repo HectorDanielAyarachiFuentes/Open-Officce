@@ -27,9 +27,9 @@ DEFAULT_PIPE_NAME = "calc_toolkit_pipe"
 try:
     import uno
     from com.sun.star.beans import PropertyValue
-    from com.sun.star.table import TableSortField, CellRangeAddress, CellAddress
+    from com.sun.star.table import TableSortField, CellRangeAddress, CellAddress, CellContentType
     from com.sun.star.sheet import TableFilterField, FilterOperator, GeneralFunction
-    from com.sun.star.awt import Rectangle
+    from com.sun.star.awt import Rectangle, FontWeight
 except ImportError:
     pass  # Permite inspección de código fuera de Python UNO si fuera necesario
 
@@ -52,7 +52,7 @@ class CalcSession:
         )
         url = f"uno:pipe,name={self.pipe_name};urp;StarOffice.ComponentContext"
 
-        for attempt in range(3):
+        for attempt in range(6):
             try:
                 self.context = resolver.resolve(url)
                 self.desktop = self.context.ServiceManager.createInstanceWithContext(
@@ -73,7 +73,8 @@ class CalcSession:
                         f'--accept=pipe,name={self.pipe_name};urp;StarOffice.ComponentContext'
                     ]
                     self.process = subprocess.Popen(cmd)
-                time.sleep(1.2)
+                # Backoff lineal: 1.5s, 3s, 4.5s, 6s, 7.5s
+                time.sleep(1.5 * (attempt + 1))
 
         raise RuntimeError("No se pudo establecer conexión con LibreOffice mediante UNO.")
 
@@ -81,10 +82,10 @@ class CalcSession:
         """Abre un documento de cálculo (.ods)."""
         abs_path = os.path.abspath(filepath)
         file_url = uno.systemPathToFileUrl(abs_path)
-        props = (
-            PropertyValue(Name="Hidden", Value=True),
-        )
-        doc = self.desktop.loadComponentFromURL(file_url, "_blank", 0, props)
+        pv = PropertyValue()
+        pv.Name = "Hidden"
+        pv.Value = True
+        doc = self.desktop.loadComponentFromURL(file_url, "_blank", 0, (pv,))
         if not doc:
             raise RuntimeError(f"No se pudo cargar el archivo: {filepath}")
         return doc
@@ -345,11 +346,13 @@ def create_pivot_chart_dynamic(
     return charts.getByName(chart_name)
 
 
-def inject_pivot_chart_loext(ods_path: str, datapilot_name: str):
+def inject_pivot_chart_loext(ods_path: str, datapilot_name: str, chart_name: Optional[str] = None):
     """
     Inyecta quirúrgicamente el atributo nativo loext:data-pilot-source en el gráfico
     dentro del archivo ODS guardado, activando las solapas interactivas de filtrado.
     Garantiza además que xlink:href='..' apunte a la planilla y no a un local-table.
+    Si se indica chart_name, sólo modifica el gráfico cuyo id/name coincida (evita
+    corromper otros gráficos presentes en el ODS).
     """
     abs_path = os.path.abspath(ods_path)
     tmp_path = abs_path + ".tmp.zip"
@@ -361,21 +364,42 @@ def inject_pivot_chart_loext(ods_path: str, datapilot_name: str):
                 text = data.decode("utf-8")
                 # Asegurar enlace ascendente
                 text = text.replace('xlink:href="."', 'xlink:href=".."')
-                
+
                 # Inyectar namespace loext si falta
                 if 'xmlns:loext=' not in text:
                     text = text.replace(
                         '<office:document-content',
                         '<office:document-content xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext/1.0"'
                     )
-                # Inyectar atributo de tabla dinámica
-                if f'loext:data-pilot-source="{datapilot_name}"' not in text:
-                    text = re.sub(
-                        r'<chart:chart(\s+[^>]*)>',
-                        rf'<chart:chart\1 loext:data-pilot-source="{datapilot_name}">',
-                        text,
-                        count=1
-                    )
+
+                # Inyectar atributo de tabla dinámica sólo en el gráfico correcto
+                attr = f'loext:data-pilot-source="{datapilot_name}"'
+                if attr not in text:
+                    if chart_name:
+                        # Busca el bloque draw:object que corresponde al nombre del gráfico
+                        # y modifica únicamente el primer <chart:chart> dentro de ese bloque
+                        pattern = (
+                            r'(<draw:object[^>]*draw:name="' + re.escape(chart_name) + r'"[^>]*>.*?)'
+                            r'(<chart:chart)(\s+[^>]*>)'
+                        )
+                        replacement = rf'\1\2\3 {attr}>'
+                        new_text = re.sub(pattern, replacement, text, count=1, flags=re.DOTALL)
+                        if new_text == text:
+                            # Fallback: modificar el primer <chart:chart> si no se encontró por nombre
+                            new_text = re.sub(
+                                r'<chart:chart(\s+[^>]*)>',
+                                rf'<chart:chart\1 {attr}>',
+                                text,
+                                count=1
+                            )
+                        text = new_text
+                    else:
+                        text = re.sub(
+                            r'<chart:chart(\s+[^>]*)>',
+                            rf'<chart:chart\1 {attr}>',
+                            text,
+                            count=1
+                        )
                 data = text.encode("utf-8")
             zout.writestr(item, data)
 
@@ -420,8 +444,14 @@ def audit_workbook(doc) -> Dict[str, Any]:
         # Chequear celdas con errores (recorriendo cursor usado)
         cursor = sheet.createCursor()
         cursor.gotoEndOfUsedArea(False)
-        max_col = min(cursor.RangeAddress.EndColumn + 1, 30)
-        max_row = min(cursor.RangeAddress.EndRow + 1, 300)
+        max_col = cursor.RangeAddress.EndColumn + 1
+        max_row = cursor.RangeAddress.EndRow + 1
+
+        if max_col > 30 or max_row > 300:
+            issues.append(
+                f"Hoja '{sheet_name}': Tamaño grande ({max_col} cols × {max_row} filas). "
+                f"Se auditan todas las celdas del área usada."
+            )
 
         for r in range(max_row):
             for c in range(max_col):
@@ -538,10 +568,10 @@ def copy_filtered_sheet(
                     target_sheet.getCellByPosition(c, dest_row_idx).setFormula(f_tpl.replace("{row}", str(calc_r)))
                 else:
                     src_c = src_sheet.getCellByPosition(c, r)
-                    src_type = src_c.getType().value
-                    if src_type == "VALUE":
+                    src_type = src_c.getType()
+                    if src_type == CellContentType.VALUE:
                         target_sheet.getCellByPosition(c, dest_row_idx).setValue(src_c.getValue())
-                    elif src_type == "FORMULA":
+                    elif src_type == CellContentType.FORMULA:
                         target_sheet.getCellByPosition(c, dest_row_idx).setFormula(src_c.getFormula())
                     else:
                         target_sheet.getCellByPosition(c, dest_row_idx).setString(src_c.getString())
@@ -549,7 +579,7 @@ def copy_filtered_sheet(
 
     # Estilo de encabezados
     h_range = target_sheet.getCellRangeByPosition(0, 0, total_cols - 1, 0)
-    h_range.setPropertyValue("CharWeight", 150.0) # Bold
+    h_range.setPropertyValue("CharWeight", FontWeight.BOLD)
     bg_color = header_style.get("bg_color", 0x1B365D) if header_style else 0x1B365D
     txt_color = header_style.get("txt_color", 0xFFFFFF) if header_style else 0xFFFFFF
     h_range.setPropertyValue("CellBackColor", bg_color)
