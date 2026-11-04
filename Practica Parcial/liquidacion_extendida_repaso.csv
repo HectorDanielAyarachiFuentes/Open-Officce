@@ -1,0 +1,281 @@
+Liquidación,ID Legajo,Nro Concepto,Descripción del Concepto,Importe,Nombre del Empleado,Apellido del Empleado,Área,Cargo,Género
+2026-01,1,101,Asignación del Cargo,11000,Martín,Aguirre,Administración,Empleado,M
+2026-01,1,103,Asignación Zona,600,Martín,Aguirre,Administración,Empleado,M
+2026-01,1,301,Descuento Obra Social,-350,Martín,Aguirre,Administración,Empleado,M
+2026-01,1,302,Descuento Sindical,-220,Martín,Aguirre,Administración,Empleado,M
+2026-01,1,401,Aportes Patronales,550,Martín,Aguirre,Administración,Empleado,M
+2026-01,2,101,Asignación del Cargo,11000,Valeria,Bustos,Ventas,Gerente,F
+2026-01,2,102,Adicional Cargo,2400,Valeria,Bustos,Ventas,Gerente,F
+2026-01,2,103,Asignación Zona,600,Valeria,Bustos,Ventas,Gerente,F
+2026-01,2,301,Descuento Obra Social,-350,Valeria,Bustos,Ventas,Gerente,F
+2026-01,2,302,Descuento Sindical,-220,Valeria,Bustos,Ventas,Gerente,F
+2026-01,2,401,Aportes Patronales,550,Valeria,Bustos,Ventas,Gerente,F
+2026-01,2,201,Asignaciones Familiares,850,Valeria,Bustos,Ventas,Gerente,F
+2026-01,3,101,Asignación del Cargo,11000,Lucía,Carrizo,Producción,Empleado,F
+2026-01,3,103,Asignación Zona,600,Lucía,Carrizo,Producción,Empleado,F
+2026-01,3,301,Descuento Obra Social,-350,Lucía,Carrizo,Producción,Empleado,F
+2026-01,3,302,Descuento Sindical,-220,Lucía,Carrizo,Producción,Empleado,F
+2026-01,3,401,Aportes Patronales,550,Lucía,Carrizo,Producción,Empleado,F
+2026-01,4,101,Asignación del Cargo,11000,Carolina,Domínguez,Ventas,Empleado,F
+2026-01,4,103,Asignación Zona,600,Carolina,Domínguez,Ventas,Empleado,F
+2026-01,4,301,Descuento Obra Social,-350,Carolina,Domínguez,Ventas,Empleado,F
+2026-01,4,302,Descuento Sindical,-220,Carolina,Domínguez,Ventas,Empleado,F
+2026-01,4,401,Aportes Patronales,550,Carolina,Domínguez,Ventas,Empleado,F
+2026-01,4,201,Asignaciones Familiares,850,Carolina,Domínguez,Ventas,Empleado,F
+2026-01,5,101,Asignación del Cargo,11000,Elena,Echeverría,Producción,Gerente,F
+2026-01,5,102,Adicional Cargo,2400,Elena,Echeverría,Producción,Gerente,F
+2026-01,5,103,Asignación Zona,600,Elena,Echeverría,Producción,Gerente,F
+2026-01,5,301,Descuento Obra Social,-350,Elena,Echeverría,Producción,Gerente,F
+2026-01,5,302,Descuento Sindical,-220,Elena,Echeverría,Producción,Gerente,F
+2026-01,5,401,Aportes Patronales,550,Elena,Echeverría,Producción,Gerente,F
+2026-01,6,101,Asignación del Cargo,11000,Diego,Fernández,Administración,Empleado,M
+2026-01,6,103,Asignación Zona,600,Diego,Fernández,Administración,Empleado,M
+2026-01,6,301,Descuento Obra Social,-350,Diego,Fernández,Administración,Empleado,M
+2026-01,6,302,Descuento Sindical,-220,Diego,Fernández,Administración,Empleado,M
+2026-01,6,401,Aportes Patronales,550,Diego,Fernández,Administración,Empleado,M
+2026-01,6,201,Asignaciones Familiares,850,Diego,Fernández,Administración,Empleado,M
+2026-01,7,101,Asignación del Cargo,11000,Santiago,Gómez,Producción,Empleado,M
+2026-01,7,103,Asignación Zona,600,Santiago,Gómez,Producción,Empleado,M
+2026-01,7,301,Descuento Obra Social,-350,Santiago,Gómez,Producción,Empleado,M
+2026-01,7,302,Descuento Sindical,-220,Santiago,Gómez,Producción,Empleado,M
+2026-01,7,401,Aportes Patronales,550,Santiago,Gómez,Producción,Empleado,M
+2026-01,8,101,Asignación del Cargo,11000,Facundo,Herrera,Ventas,Gerente,M
+2026-01,8,102,Adicional Cargo,2400,Facundo,Herrera,Ventas,Gerente,M
+2026-01,8,103,Asignación Zona,600,Facundo,Herrera,Ventas,Gerente,M
+2026-01,8,301,Descuento Obra Social,-350,Facundo,Herrera,Ventas,Gerente,M
+2026-01,8,302,Descuento Sindical,-220,Facundo,Herrera,Ventas,Gerente,M
+2026-01,8,401,Aportes Patronales,550,Facundo,Herrera,Ventas,Gerente,M
+2026-01,8,201,Asignaciones Familiares,850,Facundo,Herrera,Ventas,Gerente,M
+2026-01,9,101,Asignación del Cargo,11000,Mariana,Ibáñez,Administración,Empleado,F
+2026-01,9,103,Asignación Zona,600,Mariana,Ibáñez,Administración,Empleado,F
+2026-01,9,301,Descuento Obra Social,-350,Mariana,Ibáñez,Administración,Empleado,F
+2026-01,9,302,Descuento Sindical,-220,Mariana,Ibáñez,Administración,Empleado,F
+2026-01,9,401,Aportes Patronales,550,Mariana,Ibáñez,Administración,Empleado,F
+2026-01,10,101,Asignación del Cargo,11000,Nicolás,Juárez,Producción,Empleado,M
+2026-01,10,103,Asignación Zona,600,Nicolás,Juárez,Producción,Empleado,M
+2026-01,10,301,Descuento Obra Social,-350,Nicolás,Juárez,Producción,Empleado,M
+2026-01,10,302,Descuento Sindical,-220,Nicolás,Juárez,Producción,Empleado,M
+2026-01,10,401,Aportes Patronales,550,Nicolás,Juárez,Producción,Empleado,M
+2026-01,10,201,Asignaciones Familiares,850,Nicolás,Juárez,Producción,Empleado,M
+2026-01,11,101,Asignación del Cargo,11000,Paula,Ledesma,Administración,Gerente,F
+2026-01,11,102,Adicional Cargo,2400,Paula,Ledesma,Administración,Gerente,F
+2026-01,11,103,Asignación Zona,600,Paula,Ledesma,Administración,Gerente,F
+2026-01,11,301,Descuento Obra Social,-350,Paula,Ledesma,Administración,Gerente,F
+2026-01,11,302,Descuento Sindical,-220,Paula,Ledesma,Administración,Gerente,F
+2026-01,11,401,Aportes Patronales,550,Paula,Ledesma,Administración,Gerente,F
+2026-01,12,101,Asignación del Cargo,11000,Agustín,Medina,Producción,Empleado,M
+2026-01,12,103,Asignación Zona,600,Agustín,Medina,Producción,Empleado,M
+2026-01,12,301,Descuento Obra Social,-350,Agustín,Medina,Producción,Empleado,M
+2026-01,12,302,Descuento Sindical,-220,Agustín,Medina,Producción,Empleado,M
+2026-01,12,401,Aportes Patronales,550,Agustín,Medina,Producción,Empleado,M
+2026-01,12,201,Asignaciones Familiares,850,Agustín,Medina,Producción,Empleado,M
+2026-02,1,101,Asignación del Cargo,11000,Martín,Aguirre,Administración,Empleado,M
+2026-02,1,103,Asignación Zona,600,Martín,Aguirre,Administración,Empleado,M
+2026-02,1,301,Descuento Obra Social,-350,Martín,Aguirre,Administración,Empleado,M
+2026-02,1,302,Descuento Sindical,-220,Martín,Aguirre,Administración,Empleado,M
+2026-02,1,401,Aportes Patronales,550,Martín,Aguirre,Administración,Empleado,M
+2026-02,2,101,Asignación del Cargo,11000,Valeria,Bustos,Ventas,Gerente,F
+2026-02,2,102,Adicional Cargo,2400,Valeria,Bustos,Ventas,Gerente,F
+2026-02,2,103,Asignación Zona,600,Valeria,Bustos,Ventas,Gerente,F
+2026-02,2,301,Descuento Obra Social,-350,Valeria,Bustos,Ventas,Gerente,F
+2026-02,2,302,Descuento Sindical,-220,Valeria,Bustos,Ventas,Gerente,F
+2026-02,2,401,Aportes Patronales,550,Valeria,Bustos,Ventas,Gerente,F
+2026-02,2,201,Asignaciones Familiares,850,Valeria,Bustos,Ventas,Gerente,F
+2026-02,3,101,Asignación del Cargo,11000,Lucía,Carrizo,Producción,Empleado,F
+2026-02,3,103,Asignación Zona,600,Lucía,Carrizo,Producción,Empleado,F
+2026-02,3,301,Descuento Obra Social,-350,Lucía,Carrizo,Producción,Empleado,F
+2026-02,3,302,Descuento Sindical,-220,Lucía,Carrizo,Producción,Empleado,F
+2026-02,3,401,Aportes Patronales,550,Lucía,Carrizo,Producción,Empleado,F
+2026-02,4,101,Asignación del Cargo,11000,Carolina,Domínguez,Ventas,Empleado,F
+2026-02,4,103,Asignación Zona,600,Carolina,Domínguez,Ventas,Empleado,F
+2026-02,4,301,Descuento Obra Social,-350,Carolina,Domínguez,Ventas,Empleado,F
+2026-02,4,302,Descuento Sindical,-220,Carolina,Domínguez,Ventas,Empleado,F
+2026-02,4,401,Aportes Patronales,550,Carolina,Domínguez,Ventas,Empleado,F
+2026-02,4,201,Asignaciones Familiares,850,Carolina,Domínguez,Ventas,Empleado,F
+2026-02,5,101,Asignación del Cargo,11000,Elena,Echeverría,Producción,Gerente,F
+2026-02,5,102,Adicional Cargo,2400,Elena,Echeverría,Producción,Gerente,F
+2026-02,5,103,Asignación Zona,600,Elena,Echeverría,Producción,Gerente,F
+2026-02,5,301,Descuento Obra Social,-350,Elena,Echeverría,Producción,Gerente,F
+2026-02,5,302,Descuento Sindical,-220,Elena,Echeverría,Producción,Gerente,F
+2026-02,5,401,Aportes Patronales,550,Elena,Echeverría,Producción,Gerente,F
+2026-02,6,101,Asignación del Cargo,11000,Diego,Fernández,Administración,Empleado,M
+2026-02,6,103,Asignación Zona,600,Diego,Fernández,Administración,Empleado,M
+2026-02,6,301,Descuento Obra Social,-350,Diego,Fernández,Administración,Empleado,M
+2026-02,6,302,Descuento Sindical,-220,Diego,Fernández,Administración,Empleado,M
+2026-02,6,401,Aportes Patronales,550,Diego,Fernández,Administración,Empleado,M
+2026-02,6,201,Asignaciones Familiares,850,Diego,Fernández,Administración,Empleado,M
+2026-02,7,101,Asignación del Cargo,11000,Santiago,Gómez,Producción,Empleado,M
+2026-02,7,103,Asignación Zona,600,Santiago,Gómez,Producción,Empleado,M
+2026-02,7,301,Descuento Obra Social,-350,Santiago,Gómez,Producción,Empleado,M
+2026-02,7,302,Descuento Sindical,-220,Santiago,Gómez,Producción,Empleado,M
+2026-02,7,401,Aportes Patronales,550,Santiago,Gómez,Producción,Empleado,M
+2026-02,8,101,Asignación del Cargo,11000,Facundo,Herrera,Ventas,Gerente,M
+2026-02,8,102,Adicional Cargo,2400,Facundo,Herrera,Ventas,Gerente,M
+2026-02,8,103,Asignación Zona,600,Facundo,Herrera,Ventas,Gerente,M
+2026-02,8,301,Descuento Obra Social,-350,Facundo,Herrera,Ventas,Gerente,M
+2026-02,8,302,Descuento Sindical,-220,Facundo,Herrera,Ventas,Gerente,M
+2026-02,8,401,Aportes Patronales,550,Facundo,Herrera,Ventas,Gerente,M
+2026-02,8,201,Asignaciones Familiares,850,Facundo,Herrera,Ventas,Gerente,M
+2026-02,9,101,Asignación del Cargo,11000,Mariana,Ibáñez,Administración,Empleado,F
+2026-02,9,103,Asignación Zona,600,Mariana,Ibáñez,Administración,Empleado,F
+2026-02,9,301,Descuento Obra Social,-350,Mariana,Ibáñez,Administración,Empleado,F
+2026-02,9,302,Descuento Sindical,-220,Mariana,Ibáñez,Administración,Empleado,F
+2026-02,9,401,Aportes Patronales,550,Mariana,Ibáñez,Administración,Empleado,F
+2026-02,10,101,Asignación del Cargo,11000,Nicolás,Juárez,Producción,Empleado,M
+2026-02,10,103,Asignación Zona,600,Nicolás,Juárez,Producción,Empleado,M
+2026-02,10,301,Descuento Obra Social,-350,Nicolás,Juárez,Producción,Empleado,M
+2026-02,10,302,Descuento Sindical,-220,Nicolás,Juárez,Producción,Empleado,M
+2026-02,10,401,Aportes Patronales,550,Nicolás,Juárez,Producción,Empleado,M
+2026-02,10,201,Asignaciones Familiares,850,Nicolás,Juárez,Producción,Empleado,M
+2026-02,11,101,Asignación del Cargo,11000,Paula,Ledesma,Administración,Gerente,F
+2026-02,11,102,Adicional Cargo,2400,Paula,Ledesma,Administración,Gerente,F
+2026-02,11,103,Asignación Zona,600,Paula,Ledesma,Administración,Gerente,F
+2026-02,11,301,Descuento Obra Social,-350,Paula,Ledesma,Administración,Gerente,F
+2026-02,11,302,Descuento Sindical,-220,Paula,Ledesma,Administración,Gerente,F
+2026-02,11,401,Aportes Patronales,550,Paula,Ledesma,Administración,Gerente,F
+2026-02,12,101,Asignación del Cargo,11000,Agustín,Medina,Producción,Empleado,M
+2026-02,12,103,Asignación Zona,600,Agustín,Medina,Producción,Empleado,M
+2026-02,12,301,Descuento Obra Social,-350,Agustín,Medina,Producción,Empleado,M
+2026-02,12,302,Descuento Sindical,-220,Agustín,Medina,Producción,Empleado,M
+2026-02,12,401,Aportes Patronales,550,Agustín,Medina,Producción,Empleado,M
+2026-02,12,201,Asignaciones Familiares,850,Agustín,Medina,Producción,Empleado,M
+2026-03,1,101,Asignación del Cargo,11000,Martín,Aguirre,Administración,Empleado,M
+2026-03,1,103,Asignación Zona,600,Martín,Aguirre,Administración,Empleado,M
+2026-03,1,301,Descuento Obra Social,-350,Martín,Aguirre,Administración,Empleado,M
+2026-03,1,302,Descuento Sindical,-220,Martín,Aguirre,Administración,Empleado,M
+2026-03,1,401,Aportes Patronales,550,Martín,Aguirre,Administración,Empleado,M
+2026-03,2,101,Asignación del Cargo,11000,Valeria,Bustos,Ventas,Gerente,F
+2026-03,2,102,Adicional Cargo,2400,Valeria,Bustos,Ventas,Gerente,F
+2026-03,2,103,Asignación Zona,600,Valeria,Bustos,Ventas,Gerente,F
+2026-03,2,301,Descuento Obra Social,-350,Valeria,Bustos,Ventas,Gerente,F
+2026-03,2,302,Descuento Sindical,-220,Valeria,Bustos,Ventas,Gerente,F
+2026-03,2,401,Aportes Patronales,550,Valeria,Bustos,Ventas,Gerente,F
+2026-03,2,201,Asignaciones Familiares,850,Valeria,Bustos,Ventas,Gerente,F
+2026-03,3,101,Asignación del Cargo,11000,Lucía,Carrizo,Producción,Empleado,F
+2026-03,3,103,Asignación Zona,600,Lucía,Carrizo,Producción,Empleado,F
+2026-03,3,301,Descuento Obra Social,-350,Lucía,Carrizo,Producción,Empleado,F
+2026-03,3,302,Descuento Sindical,-220,Lucía,Carrizo,Producción,Empleado,F
+2026-03,3,401,Aportes Patronales,550,Lucía,Carrizo,Producción,Empleado,F
+2026-03,4,101,Asignación del Cargo,11000,Carolina,Domínguez,Ventas,Empleado,F
+2026-03,4,103,Asignación Zona,600,Carolina,Domínguez,Ventas,Empleado,F
+2026-03,4,301,Descuento Obra Social,-350,Carolina,Domínguez,Ventas,Empleado,F
+2026-03,4,302,Descuento Sindical,-220,Carolina,Domínguez,Ventas,Empleado,F
+2026-03,4,401,Aportes Patronales,550,Carolina,Domínguez,Ventas,Empleado,F
+2026-03,4,201,Asignaciones Familiares,850,Carolina,Domínguez,Ventas,Empleado,F
+2026-03,5,101,Asignación del Cargo,11000,Elena,Echeverría,Producción,Gerente,F
+2026-03,5,102,Adicional Cargo,2400,Elena,Echeverría,Producción,Gerente,F
+2026-03,5,103,Asignación Zona,600,Elena,Echeverría,Producción,Gerente,F
+2026-03,5,301,Descuento Obra Social,-350,Elena,Echeverría,Producción,Gerente,F
+2026-03,5,302,Descuento Sindical,-220,Elena,Echeverría,Producción,Gerente,F
+2026-03,5,401,Aportes Patronales,550,Elena,Echeverría,Producción,Gerente,F
+2026-03,6,101,Asignación del Cargo,11000,Diego,Fernández,Administración,Empleado,M
+2026-03,6,103,Asignación Zona,600,Diego,Fernández,Administración,Empleado,M
+2026-03,6,301,Descuento Obra Social,-350,Diego,Fernández,Administración,Empleado,M
+2026-03,6,302,Descuento Sindical,-220,Diego,Fernández,Administración,Empleado,M
+2026-03,6,401,Aportes Patronales,550,Diego,Fernández,Administración,Empleado,M
+2026-03,6,201,Asignaciones Familiares,850,Diego,Fernández,Administración,Empleado,M
+2026-03,7,101,Asignación del Cargo,11000,Santiago,Gómez,Producción,Empleado,M
+2026-03,7,103,Asignación Zona,600,Santiago,Gómez,Producción,Empleado,M
+2026-03,7,301,Descuento Obra Social,-350,Santiago,Gómez,Producción,Empleado,M
+2026-03,7,302,Descuento Sindical,-220,Santiago,Gómez,Producción,Empleado,M
+2026-03,7,401,Aportes Patronales,550,Santiago,Gómez,Producción,Empleado,M
+2026-03,8,101,Asignación del Cargo,11000,Facundo,Herrera,Ventas,Gerente,M
+2026-03,8,102,Adicional Cargo,2400,Facundo,Herrera,Ventas,Gerente,M
+2026-03,8,103,Asignación Zona,600,Facundo,Herrera,Ventas,Gerente,M
+2026-03,8,301,Descuento Obra Social,-350,Facundo,Herrera,Ventas,Gerente,M
+2026-03,8,302,Descuento Sindical,-220,Facundo,Herrera,Ventas,Gerente,M
+2026-03,8,401,Aportes Patronales,550,Facundo,Herrera,Ventas,Gerente,M
+2026-03,8,201,Asignaciones Familiares,850,Facundo,Herrera,Ventas,Gerente,M
+2026-03,9,101,Asignación del Cargo,11000,Mariana,Ibáñez,Administración,Empleado,F
+2026-03,9,103,Asignación Zona,600,Mariana,Ibáñez,Administración,Empleado,F
+2026-03,9,301,Descuento Obra Social,-350,Mariana,Ibáñez,Administración,Empleado,F
+2026-03,9,302,Descuento Sindical,-220,Mariana,Ibáñez,Administración,Empleado,F
+2026-03,9,401,Aportes Patronales,550,Mariana,Ibáñez,Administración,Empleado,F
+2026-03,10,101,Asignación del Cargo,11000,Nicolás,Juárez,Producción,Empleado,M
+2026-03,10,103,Asignación Zona,600,Nicolás,Juárez,Producción,Empleado,M
+2026-03,10,301,Descuento Obra Social,-350,Nicolás,Juárez,Producción,Empleado,M
+2026-03,10,302,Descuento Sindical,-220,Nicolás,Juárez,Producción,Empleado,M
+2026-03,10,401,Aportes Patronales,550,Nicolás,Juárez,Producción,Empleado,M
+2026-03,10,201,Asignaciones Familiares,850,Nicolás,Juárez,Producción,Empleado,M
+2026-03,11,101,Asignación del Cargo,11000,Paula,Ledesma,Administración,Gerente,F
+2026-03,11,102,Adicional Cargo,2400,Paula,Ledesma,Administración,Gerente,F
+2026-03,11,103,Asignación Zona,600,Paula,Ledesma,Administración,Gerente,F
+2026-03,11,301,Descuento Obra Social,-350,Paula,Ledesma,Administración,Gerente,F
+2026-03,11,302,Descuento Sindical,-220,Paula,Ledesma,Administración,Gerente,F
+2026-03,11,401,Aportes Patronales,550,Paula,Ledesma,Administración,Gerente,F
+2026-03,12,101,Asignación del Cargo,11000,Agustín,Medina,Producción,Empleado,M
+2026-03,12,103,Asignación Zona,600,Agustín,Medina,Producción,Empleado,M
+2026-03,12,301,Descuento Obra Social,-350,Agustín,Medina,Producción,Empleado,M
+2026-03,12,302,Descuento Sindical,-220,Agustín,Medina,Producción,Empleado,M
+2026-03,12,401,Aportes Patronales,550,Agustín,Medina,Producción,Empleado,M
+2026-03,12,201,Asignaciones Familiares,850,Agustín,Medina,Producción,Empleado,M
+2026-04,1,101,Asignación del Cargo,11000,Martín,Aguirre,Administración,Empleado,M
+2026-04,1,103,Asignación Zona,600,Martín,Aguirre,Administración,Empleado,M
+2026-04,1,301,Descuento Obra Social,-350,Martín,Aguirre,Administración,Empleado,M
+2026-04,1,302,Descuento Sindical,-220,Martín,Aguirre,Administración,Empleado,M
+2026-04,1,401,Aportes Patronales,550,Martín,Aguirre,Administración,Empleado,M
+2026-04,2,101,Asignación del Cargo,11000,Valeria,Bustos,Ventas,Gerente,F
+2026-04,2,102,Adicional Cargo,2400,Valeria,Bustos,Ventas,Gerente,F
+2026-04,2,103,Asignación Zona,600,Valeria,Bustos,Ventas,Gerente,F
+2026-04,2,301,Descuento Obra Social,-350,Valeria,Bustos,Ventas,Gerente,F
+2026-04,2,302,Descuento Sindical,-220,Valeria,Bustos,Ventas,Gerente,F
+2026-04,2,401,Aportes Patronales,550,Valeria,Bustos,Ventas,Gerente,F
+2026-04,2,201,Asignaciones Familiares,850,Valeria,Bustos,Ventas,Gerente,F
+2026-04,3,101,Asignación del Cargo,11000,Lucía,Carrizo,Producción,Empleado,F
+2026-04,3,103,Asignación Zona,600,Lucía,Carrizo,Producción,Empleado,F
+2026-04,3,301,Descuento Obra Social,-350,Lucía,Carrizo,Producción,Empleado,F
+2026-04,3,302,Descuento Sindical,-220,Lucía,Carrizo,Producción,Empleado,F
+2026-04,3,401,Aportes Patronales,550,Lucía,Carrizo,Producción,Empleado,F
+2026-04,4,101,Asignación del Cargo,11000,Carolina,Domínguez,Ventas,Empleado,F
+2026-04,4,103,Asignación Zona,600,Carolina,Domínguez,Ventas,Empleado,F
+2026-04,4,301,Descuento Obra Social,-350,Carolina,Domínguez,Ventas,Empleado,F
+2026-04,4,302,Descuento Sindical,-220,Carolina,Domínguez,Ventas,Empleado,F
+2026-04,4,401,Aportes Patronales,550,Carolina,Domínguez,Ventas,Empleado,F
+2026-04,4,201,Asignaciones Familiares,850,Carolina,Domínguez,Ventas,Empleado,F
+2026-04,5,101,Asignación del Cargo,11000,Elena,Echeverría,Producción,Gerente,F
+2026-04,5,102,Adicional Cargo,2400,Elena,Echeverría,Producción,Gerente,F
+2026-04,5,103,Asignación Zona,600,Elena,Echeverría,Producción,Gerente,F
+2026-04,5,301,Descuento Obra Social,-350,Elena,Echeverría,Producción,Gerente,F
+2026-04,5,302,Descuento Sindical,-220,Elena,Echeverría,Producción,Gerente,F
+2026-04,5,401,Aportes Patronales,550,Elena,Echeverría,Producción,Gerente,F
+2026-04,6,101,Asignación del Cargo,11000,Diego,Fernández,Administración,Empleado,M
+2026-04,6,103,Asignación Zona,600,Diego,Fernández,Administración,Empleado,M
+2026-04,6,301,Descuento Obra Social,-350,Diego,Fernández,Administración,Empleado,M
+2026-04,6,302,Descuento Sindical,-220,Diego,Fernández,Administración,Empleado,M
+2026-04,6,401,Aportes Patronales,550,Diego,Fernández,Administración,Empleado,M
+2026-04,6,201,Asignaciones Familiares,850,Diego,Fernández,Administración,Empleado,M
+2026-04,7,101,Asignación del Cargo,11000,Santiago,Gómez,Producción,Empleado,M
+2026-04,7,103,Asignación Zona,600,Santiago,Gómez,Producción,Empleado,M
+2026-04,7,301,Descuento Obra Social,-350,Santiago,Gómez,Producción,Empleado,M
+2026-04,7,302,Descuento Sindical,-220,Santiago,Gómez,Producción,Empleado,M
+2026-04,7,401,Aportes Patronales,550,Santiago,Gómez,Producción,Empleado,M
+2026-04,8,101,Asignación del Cargo,11000,Facundo,Herrera,Ventas,Gerente,M
+2026-04,8,102,Adicional Cargo,2400,Facundo,Herrera,Ventas,Gerente,M
+2026-04,8,103,Asignación Zona,600,Facundo,Herrera,Ventas,Gerente,M
+2026-04,8,301,Descuento Obra Social,-350,Facundo,Herrera,Ventas,Gerente,M
+2026-04,8,302,Descuento Sindical,-220,Facundo,Herrera,Ventas,Gerente,M
+2026-04,8,401,Aportes Patronales,550,Facundo,Herrera,Ventas,Gerente,M
+2026-04,8,201,Asignaciones Familiares,850,Facundo,Herrera,Ventas,Gerente,M
+2026-04,9,101,Asignación del Cargo,11000,Mariana,Ibáñez,Administración,Empleado,F
+2026-04,9,103,Asignación Zona,600,Mariana,Ibáñez,Administración,Empleado,F
+2026-04,9,301,Descuento Obra Social,-350,Mariana,Ibáñez,Administración,Empleado,F
+2026-04,9,302,Descuento Sindical,-220,Mariana,Ibáñez,Administración,Empleado,F
+2026-04,9,401,Aportes Patronales,550,Mariana,Ibáñez,Administración,Empleado,F
+2026-04,10,101,Asignación del Cargo,11000,Nicolás,Juárez,Producción,Empleado,M
+2026-04,10,103,Asignación Zona,600,Nicolás,Juárez,Producción,Empleado,M
+2026-04,10,301,Descuento Obra Social,-350,Nicolás,Juárez,Producción,Empleado,M
+2026-04,10,302,Descuento Sindical,-220,Nicolás,Juárez,Producción,Empleado,M
+2026-04,10,401,Aportes Patronales,550,Nicolás,Juárez,Producción,Empleado,M
+2026-04,10,201,Asignaciones Familiares,850,Nicolás,Juárez,Producción,Empleado,M
+2026-04,11,101,Asignación del Cargo,11000,Paula,Ledesma,Administración,Gerente,F
+2026-04,11,102,Adicional Cargo,2400,Paula,Ledesma,Administración,Gerente,F
+2026-04,11,103,Asignación Zona,600,Paula,Ledesma,Administración,Gerente,F
+2026-04,11,301,Descuento Obra Social,-350,Paula,Ledesma,Administración,Gerente,F
+2026-04,11,302,Descuento Sindical,-220,Paula,Ledesma,Administración,Gerente,F
+2026-04,11,401,Aportes Patronales,550,Paula,Ledesma,Administración,Gerente,F
+2026-04,12,101,Asignación del Cargo,11000,Agustín,Medina,Producción,Empleado,M
+2026-04,12,103,Asignación Zona,600,Agustín,Medina,Producción,Empleado,M
+2026-04,12,301,Descuento Obra Social,-350,Agustín,Medina,Producción,Empleado,M
+2026-04,12,302,Descuento Sindical,-220,Agustín,Medina,Producción,Empleado,M
+2026-04,12,401,Aportes Patronales,550,Agustín,Medina,Producción,Empleado,M
+2026-04,12,201,Asignaciones Familiares,850,Agustín,Medina,Producción,Empleado,M

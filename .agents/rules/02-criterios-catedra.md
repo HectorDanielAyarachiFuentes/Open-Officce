@@ -29,6 +29,11 @@ Las docentes de la cátedra aplican las siguientes pautas determinantes para la 
 - **Separadores Sintácticos (`:` vs. `;`):**
   - Los **dos puntos (`:`)** definen un rango continuo de celdas (ej. `A4:A108`, `G2:G178`).
   - El **punto y coma (`;`)** se utiliza obligatoriamente para separar argumentos funcionales o celdas individuales disjuntas.
+- **Cálculo Nativo de Edad (Función `AÑOS`):**
+  - En LibreOffice Calc la función nativa y estándar recomendada es `=AÑOS(FechaNac; HOY(); 0)` (en UNO: `=YEARS(...)`).
+  - Parámetro `0`: calcula años cumplidos exactos basados en el intervalo real (sin redondear al alza).
+  - Parámetro `1`: calcula diferencia de números de año sin considerar día/mes.
+  - Evitar `SIFECHA`/`DATEDIF` (funciones de compatibilidad con Excel).
 - **Asistente para Funciones (`fx`):** Se recomienda utilizar el asistente (`Insertar > Función...` o `Ctrl + F2`) cuando existan dudas sobre la estructura de la función, verificando en la vista previa del diálogo que el resultado sea válido antes de presionar *Aceptar*.
 
 ---

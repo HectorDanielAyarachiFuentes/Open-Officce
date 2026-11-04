@@ -1,0 +1,37 @@
+ID,Nombre,Apellido,Fecha de Nacimiento,Profesion,Area,Cargo,Fecha de ingreso,Sueldo,Género
+1,Martín,Aguirre,1981-03-14,Contador Público,Administración,Empleado,2008-04-01,12800,M
+2,Valeria,Bustos,1979-11-22,Lic. en Sistemas,Ventas,Gerente,2011-02-15,16200,F
+3,Lucía,Carrizo,1985-07-09,Ingeniera Industrial,Producción,Empleado,2018-06-01,13600,F
+4,Carolina,Domínguez,1988-01-30,Lic. en RRHH,Ventas,Empleado,2019-03-10,13100,F
+5,Elena,Echeverría,1982-09-18,Economista,Producción,Gerente,2014-08-01,15400,F
+6,Diego,Fernández,1986-05-25,Técnico Electrónico,Administración,Empleado,2019-09-01,14100,M
+7,Santiago,Gómez,1984-12-11,Lic. en Administración,Producción,Empleado,2012-05-01,13200,M
+8,Facundo,Herrera,1980-08-04,Ingeniero Químico,Ventas,Gerente,2010-10-01,16900,M
+9,Mariana,Ibáñez,1990-02-19,Lic. en Marketing,Administración,Empleado,2021-02-01,14600,F
+10,Nicolás,Juárez,1987-06-27,Abogado,Producción,Empleado,2020-07-01,13500,M
+11,Paula,Ledesma,1983-04-12,Contadora Pública,Administración,Gerente,2013-03-01,15800,F
+12,Agustín,Medina,1989-10-05,Analista de Datos,Producción,Empleado,2021-05-01,13400,M
+13,Florencia,Navarro,1981-12-20,Lic. en Comercialización,Ventas,Gerente,2009-11-01,16400,F
+14,Joaquín,Ortega,1991-07-15,Lic. en Administración,Administración,Empleado,2022-01-15,12600,M
+15,Camila,Peralta,1986-03-28,Ingeniera en Calidad,Producción,Gerente,2015-04-01,15600,F
+16,Ezequiel,Quiroga,1984-01-08,Técnico Mecánico,Producción,Empleado,2016-09-01,13000,M
+17,Rocío,Rivarola,1988-11-14,Lic. en RRHH,Administración,Empleado,2020-02-01,13900,F
+18,Mateo,Sánchez,1983-06-03,Lic. en Economía,Ventas,Empleado,2017-08-01,13300,M
+19,Sofía,Torres,1980-09-29,Ingeniera Industrial,Producción,Gerente,2007-05-01,15900,F
+20,Lautaro,Urquiza,1992-04-17,Analista Contable,Administración,Empleado,2022-06-01,12400,M
+21,Micaela,Valdez,1985-08-23,Lic. en Marketing,Ventas,Gerente,2014-02-01,16100,F
+22,Federico,Yáñez,1987-02-10,Técnico Electromecánico,Producción,Empleado,2018-11-01,13100,M
+23,Victoria,Zárate,1982-05-06,Contadora Pública,Administración,Gerente,2011-09-01,15700,F
+24,Tomás,Albornoz,1990-12-01,Lic. en Comercio Exterior,Ventas,Empleado,2021-08-01,12900,M
+25,Gabriela,Benítez,1984-07-19,Ingeniera Química,Producción,Empleado,2016-03-01,13800,F
+26,Alejandro,Ceballos,1978-10-25,Lic. en Sistemas,Administración,Empleado,2006-02-01,14200,M
+27,Natalia,Delgado,1986-01-16,Lic. en Relaciones Públicas,Ventas,Empleado,2019-05-01,13200,F
+28,Sebastián,Giménez,1983-03-08,Ingeniero Industrial,Producción,Gerente,2012-10-01,16000,M
+29,Julieta,Moyano,1989-06-21,Lic. en Administración,Administración,Empleado,2020-10-01,13500,F
+30,Ramiro,Paz,1981-08-13,Economista,Ventas,Gerente,2010-04-01,16600,M
+31,Ailén,Villalba,1987-09-02,Ingeniera en Alimentos,Producción,Gerente,2015-07-01,15500,F
+32,Gonzalo,Acosta,1993-01-27,Técnico Superior en RRHH,Administración,Empleado,2023-03-01,12200,M
+33,Belén,Castillo,1985-04-09,Lic. en Comercialización,Ventas,Gerente,2013-08-01,16300,F
+34,Ignacio,Ponce,1988-10-18,Analista de Procesos,Producción,Empleado,2019-11-01,13300,M
+35,Daniela,Vega,1982-12-05,Contadora Pública,Administración,Gerente,2011-06-01,15900,F
+36,Lucas,Molina,1991-05-14,Ejecutivo de Cuentas,Ventas,Empleado,2022-04-01,12700,M

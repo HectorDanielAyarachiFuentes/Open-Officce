@@ -43,6 +43,9 @@ Las reglas detalladas operativas se encuentran modularizadas en la carpeta [`.ag
 
 6. **Fórmulas y Localización:**
    - En el API UNO (`cell.setFormula(...)`), los nombres de función van siempre en **inglés estándar**: `=COUNTIF(...)`, `=COUNTIFS(...)`, `=SUM(...)`, `=AVERAGE(...)`, `=IF(...)`, `=MOD(...)`. Calc los traduce automáticamente al español en la interfaz.
+   - **Cálculo de Edad en Años Cumplidos (Estándar Nativo Calc):** Usar siempre la función nativa `=AÑOS(FechaNac; HOY(); 0)` (en API UNO: `=YEARS(FechaNac; TODAY(); 0)`).
+     - El tercer parámetro `0` asegura el cálculo de años cumplidos reales según intervalo exacto de fechas (sin redondear hacia arriba).
+     - Evitar `SIFECHA` / `DATEDIF`, que son alias de retrocompatibilidad con Excel.
 
 7. **Principio de Entregable Limpio:**
    - La estrella exclusiva de la entrega es el archivo `.ods` resuelto.

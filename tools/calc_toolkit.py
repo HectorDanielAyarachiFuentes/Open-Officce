@@ -27,7 +27,7 @@ DEFAULT_PIPE_NAME = "calc_toolkit_pipe"
 try:
     import uno
     from com.sun.star.beans import PropertyValue
-    from com.sun.star.table import TableSortField, CellRangeAddress, CellAddress, CellContentType
+    from com.sun.star.table import TableSortField, CellRangeAddress, CellAddress
     from com.sun.star.sheet import TableFilterField, FilterOperator, GeneralFunction
     from com.sun.star.awt import Rectangle, FontWeight
 except ImportError:
@@ -568,10 +568,10 @@ def copy_filtered_sheet(
                     target_sheet.getCellByPosition(c, dest_row_idx).setFormula(f_tpl.replace("{row}", str(calc_r)))
                 else:
                     src_c = src_sheet.getCellByPosition(c, r)
-                    src_type = src_c.getType()
-                    if src_type == CellContentType.VALUE:
+                    src_type = src_c.getType().value
+                    if src_type == "VALUE":
                         target_sheet.getCellByPosition(c, dest_row_idx).setValue(src_c.getValue())
-                    elif src_type == CellContentType.FORMULA:
+                    elif src_type == "FORMULA":
                         target_sheet.getCellByPosition(c, dest_row_idx).setFormula(src_c.getFormula())
                     else:
                         target_sheet.getCellByPosition(c, dest_row_idx).setString(src_c.getString())
