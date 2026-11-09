@@ -27,7 +27,8 @@ Las reglas detalladas operativas se encuentran modularizadas en la carpeta [`.ag
    - **Prohibido usar `chart.getData().setData(...)`:** Dicho método desconecta el gráfico de la planilla y crea un `<table:table table:name="local-table">` estático con `xlink:href="."`. El gráfico DEBE vincularse pasando directamente la tupla de rango vivo `(dp_range,)` a `addNewByName(..., True, True)` con `xlink:href=".."`.
    - Jamás incluir la fila ni columna de "Total general" en los rangos del gráfico.
 
-4. **Persistencia Dual de Filtros Estándar y Preservación de Encabezados (Filas 1 a 4):**
+4. **Persistencia Dual de Filtros Estándar, Filtro Automático y Preservación de Encabezados (Filas 1 a 4):**
+   - **Filtro Automático (`AutoFilter = True`):** Toda tabla principal de datos o padrón de respuestas/nómina debe quedar registrada con un `DatabaseRange` formal y `AutoFilter = True` habilitado (flechas `▼` de selección rápida en encabezados), asegurando que el docente pueda explorar y filtrar inmediatamente.
    - **Preservación de la parte superior:** Al aplicar filtros estándar en una hoja, Calc evalúa las filas de parámetros y encabezados y suele colapsarlas/ocultarlas (`IsVisible = False`). Es **estrictamente obligatorio** restaurar la visibilidad de todas las filas de título, parámetros y encabezados (ej. `for r in range(4): sheet.getRows().getByIndex(r).setPropertyValue("IsVisible", True)`). La parte superior de la tabla NUNCA debe faltar ni estar oculta.
    - Registrar siempre un `DatabaseRange` con `doc.DatabaseRanges.addNewByName(...)`.
    - Asignar `TableFilterField` y ejecutar `refresh()`.

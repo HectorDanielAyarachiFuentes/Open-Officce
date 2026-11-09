@@ -99,3 +99,12 @@
   - Tablas con `=COUNTIFS(...)` para Funcionarios sobre modalidad (20 presencial, 29 virtual) y Personal sobre prioridad (19 alta, 32 estándar).
   - Detalle curricular por nivel y DataPilot nativo `TD_Propuesta_Formativa` con Pivot Chart dinámico (`loext:data-pilot-source`).
   - Ubicación de entrega: carpeta `Final/Solucion/final.ods` y `Solucion/final.ods`.
+
+---
+
+# 6. Práctica 04 (Inscripción a Capacitaciones — Gestión Integral)
+- **Hoja Respuestas (Base normalizada y evaluada):**
+  - Columnas clave: `DNI normalizado`, `Código`, `Clave` (`J2 & " / " & K2`), `Vez` (`=COUNTIF($L$2:L2; L2)`), `Duplicada`, `Área normalizada` (`VLOOKUP` con `$Equivalencias`), `Meses/Días antigüedad`, `En plazo`, `Válida` (`AND(...)`), `Orden en su capacitación` (`COUNTIFS` multicriterio de desempate) y `Situación` (`Admitida` / `Lista de espera`).
+  - `DatabaseRange`: `Tabla_Respuestas` registrado sobre todo el rango `A1:U91` con `AutoFilter = True` habilitado obligatoriamente para navegación interactiva del docente.
+- **Hojas Auxiliares y Dinámicas:**
+  - `Parametros`, `Catalogo`, `Equivalencias`, `Resumen` (evaluación de cupos y lista de espera con `=MAX(0; D2-F2)`), `Dinamicas` (DataPilots `ValidasPorCapacitacionYTurno` y `ValidasPorArea`) y `Expectativas`.

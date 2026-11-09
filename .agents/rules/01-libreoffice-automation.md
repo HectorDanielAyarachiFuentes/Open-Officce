@@ -16,9 +16,10 @@ Para que los docentes o usuarios vean los criterios preconfigurados al abrir `Da
 1. **Sensibilidad al Cursor (Contexto de Celda Activa):**
    - En LibreOffice Calc, el diálogo de filtro depende estrictamente de la celda activa. Si el cursor está fuera de la tabla, Calc abre el diálogo en blanco.
    - **Regla:** El cursor debe situarse obligatoriamente sobre cualquier celda interna de la tabla o fila de encabezados (ej. `A4`, `C4`, `A1`).
-2. **Persistencia Dual en DatabaseRanges:**
+2. **Persistencia Dual en DatabaseRanges y Filtro Automático:**
    - Registrar siempre un rango de base de datos formal nombrado mediante `doc.DatabaseRanges.addNewByName("<Nombre_Rango>", cellRangeAddress)`.
-   - Configurar descriptor: `fd.setPropertyValue("ContainsHeader", True)` y asignar campos `com.sun.star.sheet.TableFilterField`.
+   - Activar `dbr.AutoFilter = True` en tablas de datos maestras para garantizar que las flechas desplegables (`▼`) queden activas en los encabezados.
+   - Para filtros estándar: configurar descriptor `fd.setPropertyValue("ContainsHeader", True)` y asignar campos `com.sun.star.sheet.TableFilterField`.
    - Invocar `dbr.refresh()` para vincularlo a la vista.
 3. **Cobertura Ampliada en content.xml (__Anonymous_Sheet_DB__):**
    - Sincronizar en `content.xml` el rango anónimo interno (`__Anonymous_Sheet_DB__<Index>`) con sus condiciones `<table:filter-and>`, para que Calc asocie los filtros ante cualquier clic.
