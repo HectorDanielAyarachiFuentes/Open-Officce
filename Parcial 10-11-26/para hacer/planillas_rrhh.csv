@@ -1,0 +1,11 @@
+ID,Nombre,Apellido,Fecha de Nacimiento,Profesion,Area,Cargo,Sueldo,Género
+1,Nicolás,Pérez,1980-01-01 00:00:00,Contador,Administración,Empleado,11500,M
+2,Ana,Alvarez,1980-12-31 00:00:00,Analista de Sistemas,Ventas,Gerente,14440,F
+3,Sofía,Rodríguez,1981-12-31 00:00:00,Ingeniero Industrial,Producción,Empleado,12500,F
+4,Ana,López,1982-12-31 00:00:00,Lic. RRHH,Ventas,Empleado,12000,F
+5,Patricia,Sánchez,1983-12-31 00:00:00,Economista,Producción,Gerente,13440,F
+6,Luis,Moreno,1984-12-30 00:00:00,Ingeniero Electrónico,Administración,Empleado,13500,M
+7,Roberto,Pérez,1985-12-30 00:00:00,Lic. en Administración,Producción,Empleado,12000,M
+8,Luis,García,1986-12-30 00:00:00,Ingeniero Químico,Ventas,Gerente,15440,M
+9,Verónica,González,1987-12-30 00:00:00,Lic. en Marketing,Administración,Empleado,14000,F
+10,Carlos,González,1988-12-29 00:00:00,Abogado,Producción,Empleado,12500,M
